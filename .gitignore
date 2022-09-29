@@ -5,8 +5,8 @@
 env/*
 
 *__pycache__*
-*ipynb_checkpoints/*
 *mypy_cache*
+.ipynb_checkpoints
 
 code/.ipython/*
 code/.jupyter/*
@@ -20,3 +20,5 @@ code/crypto_intro/.ipynb_checkpoints/*
 code/recursion/exponentiation/__pycache__/*
 code/solutions/*
 code/misc/*
+code/complexities/.mypy_cache/*
+code/complexities/.ipynb_checkpoints/*
