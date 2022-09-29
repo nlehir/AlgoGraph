@@ -5,7 +5,7 @@ This repository will contain slides, project description, code exercices and oth
 
 ## slides
 
-This folder contains the slides for the coursea.
+This folder contains the slides for the course.
 
 ## code
 
