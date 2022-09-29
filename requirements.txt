@@ -1,6 +1,9 @@
 numpy
+black
 matplotlib
 termcolor
 ipdb
 networkx
 jupyterlab
+mypy
+graphviz
