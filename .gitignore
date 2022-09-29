@@ -22,3 +22,5 @@ code/solutions/*
 code/misc/*
 code/complexities/.mypy_cache/*
 code/complexities/.ipynb_checkpoints/*
+
+code/graphs/clique/archive/*
