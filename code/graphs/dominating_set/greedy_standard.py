@@ -6,6 +6,7 @@ import pickle
 import os
 from plot_graph.plot_graph import plot_subset
 from read_params import read_params
+from termcolor import colored
 
 
 def process_graph(graph_name: str) -> None:
