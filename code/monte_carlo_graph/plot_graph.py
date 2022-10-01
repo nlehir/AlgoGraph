@@ -1,5 +1,4 @@
 import networkx as nx
-import os
 import matplotlib.pyplot as plt
 
 def plot_graph(G: nx.Graph, graph_name: str, test: int) -> None:

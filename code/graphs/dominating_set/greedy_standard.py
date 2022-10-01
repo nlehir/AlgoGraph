@@ -5,8 +5,7 @@
 import pickle
 import os
 from plot_graph.plot_graph import plot_subset
-from read_params import read_params
-from termcolor import colored
+from test_dominating import test_dominating
 
 
 def process_graph(graph_name: str) -> None:
@@ -83,8 +82,7 @@ def process_graph(graph_name: str) -> None:
                     selected_nodes,
                     graph_name,
                 )
-
-
+    test_dominating(nodes, edges_list, selected_nodes)
 
 # params = read_params()
 # n_nodes = params[0]

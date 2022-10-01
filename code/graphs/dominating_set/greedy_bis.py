@@ -5,7 +5,7 @@
 import pickle
 import os
 from plot_graph.plot_graph import plot_subset
-from read_params import read_params
+from test_dominating import test_dominating
 
 
 def process_graph(graph_name: str) -> None:
@@ -24,6 +24,7 @@ def process_graph(graph_name: str) -> None:
             os.remove(path_to_file)
 
     # size of the graph (number of nodes)
+    nodes = neighbors.keys()
     n_nodes = len(neighbors)
 
     """
@@ -87,6 +88,7 @@ def process_graph(graph_name: str) -> None:
                 graph_name,
                 method="bis",
             )
+    test_dominating(nodes, edges_list, selected_nodes)
 
 
 # process_graph("custom")
