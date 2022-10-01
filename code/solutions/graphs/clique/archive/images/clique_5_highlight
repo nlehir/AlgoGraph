@@ -1,0 +1,14 @@
+// Graph 3 : Clique
+graph {
+	3 -- 2 [color=cornflowerblue penwidth=1.1]
+	3 -- 4 [color=cornflowerblue penwidth=1.1]
+	2 -- 6 [color=cornflowerblue penwidth=1.1]
+	3 -- 6 [color=cornflowerblue penwidth=1.1]
+	2 -- 4 [color=cornflowerblue penwidth=1.1]
+	2 -- 5 [color=cornflowerblue penwidth=1.1]
+	1 -- 5 [color=cornflowerblue penwidth=1.1]
+	4 -- 1 [color=cornflowerblue penwidth=1.1]
+	2 [color=crimson penwidth=3.5]
+	3 [color=crimson penwidth=3.5]
+	4 [color=crimson penwidth=3.5]
+}
