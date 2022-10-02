@@ -110,6 +110,7 @@ def process_graph(graph_name: str) -> None:
             graph_name,
             method="ter",
         )
+    test_dominating(nodes, edges_list, selected_nodes)
 
 
 process_graph("exercise")
