@@ -2,24 +2,25 @@
 *.swp
 *.swo
 
-env/*
+env/
 
 *__pycache__*
 *mypy_cache*
 .ipynb_checkpoints
 
-code/.ipython/*
-code/.jupyter/*
-code/.local/*
-code/__pycache__/*
+code/.ipython/
+code/.jupyter/
+code/.local/
+code/__pycache__/
 code/.bash_history
 code/tags
 
-code/crypto_intro/.mypy_cache/*
-code/crypto_intro/.ipynb_checkpoints/*
-code/recursion/exponentiation/__pycache__/*
-code/misc/*
-code/complexities/.mypy_cache/*
-code/complexities/.ipynb_checkpoints/*
+code/*/.ipynb_checkpoints/
+code/*/.mypy_cache/*
+code/recursion/exponentiation/__pycache__/
+code/misc/
 
-code/graphs/clique/archive/*
+code/solutions/
+code/solutions/rsa/generate_keys_and_codes.py
+
+code/graphs/clique/archive/
