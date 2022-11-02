@@ -7,3 +7,4 @@ networkx
 jupyterlab
 mypy
 graphviz
+isort

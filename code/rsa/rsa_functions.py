@@ -66,7 +66,7 @@ def cipher_rsa(text: str, public_key: tuple[int, int]) -> str:
         print(" becomes ", end="")
         print(colored(coded_index, "blue", attrs=["bold"]))
         # we use a comma as a separator
-        code += str(coded_index) + ","
+        code += f"{coded_index},"
     # remove the last comma
     code = code[:-1]
     return code
@@ -90,7 +90,7 @@ def decipher_rsa(code, public_key, private_key):
     code_list = [int(x) for x in code_str]
     decoded_text = ""
     for coded_index in code_list:
-        print(colored(coded_index, "blue", attrs=["bold"]), end="")
+        print(colored(f"{coded_index}", "blue", attrs=["bold"]), end="")
         """
         EDIT HERE
         """
@@ -147,7 +147,7 @@ def primary_decomposition(n):
     """
     # there is no need for testing all the values below n
     # (see course)
-    # print('searching primary decomposition of ' + str(n))
+    # print("searching primary decomposition of {n}")
     """
         EDIT THE LOOP
     """
@@ -158,7 +158,7 @@ def primary_decomposition(n):
         if r_test == 0:
             # check if p_test is a primary number
             if isPrime(p_test):
-                # print(str(p_test) + ' divides ' + str(n) + ' and is prime')
+                # print(f"{p_test} divides {n} and is prime")
                 q_test = n // p_test
                 # check if q_test is a primary number
                 if isPrime(q_test):
