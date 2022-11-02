@@ -4,8 +4,8 @@ break the first ciphering solution
 Known-plaintext attack.
 """
 
-from random import shuffle
 import time
+from random import shuffle
 
 max_number_of_attempts = int(1e4)
 

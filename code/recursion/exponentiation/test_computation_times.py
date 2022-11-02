@@ -3,20 +3,21 @@
 
     Test computation time for a large number of calculations
 """
-from time import time
 import pickle
+from os import mkdir, path
 from random import randrange
+from time import time
+
 from naive_exponentiation import naive_exponentiation
-from os import path, mkdir
 
 
 def fast_exponentiation(a: int, n: int) -> int:
     if n == 0:
         return 1
     if n % 2 == 0:
-        return fast_exponentiation(a, n // 2)**2
+        return fast_exponentiation(a, n // 2) ** 2
     else:
-        return a * fast_exponentiation(a, n // 2)**2
+        return a * fast_exponentiation(a, n // 2) ** 2
 
 
 def test_fast_exp(nb_of_tests: int, n_min: int, n_max: int) -> None:
@@ -45,25 +46,25 @@ def test_fast_exp(nb_of_tests: int, n_min: int, n_max: int) -> None:
         tic = time()
         _ = fast_exponentiation(a, n)
         toc = time()
-        fastexp_time = toc-tic
+        fastexp_time = toc - tic
         fastexp_times.append(fastexp_time)
         # double splat
         tic = time()
         _ = a**n
         toc = time()
-        double_splat_time = toc-tic
+        double_splat_time = toc - tic
         double_splat_times.append(double_splat_time)
         # pow
         tic = time()
         _ = pow(a, n)
         toc = time()
-        pow_time = toc-tic
+        pow_time = toc - tic
         pow_times.append(pow_time)
         # naive
         tic = time()
         _ = naive_exponentiation(a, n)
         toc = time()
-        naive_time = toc-tic
+        naive_time = toc - tic
         naive_times.append(naive_time)
 
     # average
@@ -71,13 +72,13 @@ def test_fast_exp(nb_of_tests: int, n_min: int, n_max: int) -> None:
     if not path.exists(folder):
         mkdir(folder)
     # save computation times
-    with open(folder+"fastexp", "wb") as handle:
+    with open(folder + "fastexp", "wb") as handle:
         pickle.dump(fastexp_times, handle)
-    with open(folder+"double_splat", "wb") as handle:
+    with open(folder + "double_splat", "wb") as handle:
         pickle.dump(double_splat_times, handle)
-    with open(folder+"pow", "wb") as handle:
+    with open(folder + "pow", "wb") as handle:
         pickle.dump(pow_times, handle)
-    with open(folder+"naive", "wb") as handle:
+    with open(folder + "naive", "wb") as handle:
         pickle.dump(naive_times, handle)
 
 

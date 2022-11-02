@@ -2,8 +2,9 @@
     Deciphering a crypted text without knowing the private key.
     This time, we need to find the private key.
 """
-import rsa_functions
 from termcolor import colored
+
+import rsa_functions
 
 # we have several public keys and private keys,
 # that involve larger prime numbers.

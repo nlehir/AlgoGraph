@@ -1,8 +1,9 @@
 """
     Deciphering a crypted text when we know the private key.
 """
-import rsa_functions
 from termcolor import colored
+
+import rsa_functions
 
 # load the keys
 with open("rsa_keys/generated_public_key.txt", "r") as text_file:

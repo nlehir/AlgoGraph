@@ -3,6 +3,7 @@ break the second ciphering solution
 """
 
 from random import randrange
+
 from termcolor import colored
 
 max_number_of_attempts = 10000

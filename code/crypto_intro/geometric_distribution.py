@@ -3,8 +3,9 @@
 """
 
 import math
-import numpy as np
+
 import matplotlib.pyplot as plt
+import numpy as np
 
 total_nb_keys = math.factorial(26)
 stopping_keys = math.factorial(20)

@@ -6,7 +6,7 @@ from termcolor import colored
 
 def fast_exponentiation_algebric(a: int, n: int) -> int:
     """
-        compute a^n using the binary decomposition of n
+    compute a^n using the binary decomposition of n
     """
 
     # get the binary decomposition of n
@@ -40,9 +40,9 @@ def fast_exponentiation_algebric(a: int, n: int) -> int:
 
 def binary_decomposition(n: int) -> list:
     """
-        decompose n in powers of 2
-        please note that here, this corresponds to the
-        REVERSED binary writing of n.
+    decompose n in powers of 2
+    please note that here, this corresponds to the
+    REVERSED binary writing of n.
     """
     decomposition = list()
     if n == 0:
@@ -52,7 +52,7 @@ def binary_decomposition(n: int) -> list:
         while temp > 0:
             r = temp % 2
             decomposition.append(int(r))
-            temp = (temp-r)/2
+            temp = (temp - r) / 2
         return decomposition
 
 
@@ -67,23 +67,29 @@ def test_binary_decomposition(n: int, decomposition: list) -> None:
         if decomposition[i] == 1:
             result += 2**i
     if n == result:
-        print(colored(f"binary decomposition is correct : ", "blue") +
-              f"n={n} decomposition {decomposition}\n")
+        print(
+            colored(f"binary decomposition is correct : ", "blue")
+            + f"n={n} decomposition {decomposition}\n"
+        )
     else:
-        print(colored("wrong binary decomposition : ", "red") +
-              f"n={n} decomposition {decomposition}\n")
+        print(
+            colored("wrong binary decomposition : ", "red")
+            + f"n={n} decomposition {decomposition}\n"
+        )
 
 
 def test_method(a: int, n: int) -> None:
     print(f"testing method for a={a} and n={n}")
     function_result = fast_exponentiation_algebric(a, n)
-    pow_result = pow(a,n)
+    pow_result = pow(a, n)
     if function_result == pow_result:
         print(colored(f"result is correct : {pow_result}\n", "blue"))
     else:
-        print(colored(f"wrong result !\n", "red") +
-              f"pow gives {pow(a,n)}\n" +
-              f"function gives {function_result}\n")
+        print(
+            colored(f"wrong result !\n", "red")
+            + f"pow gives {pow(a,n)}\n"
+            + f"function gives {function_result}\n"
+        )
 
 
 """

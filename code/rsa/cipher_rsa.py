@@ -3,8 +3,9 @@
     in order to generate keys from a couple of prime numbers
     and cipher a short text file.
 """
-import rsa_functions
 from termcolor import colored
+
+import rsa_functions
 
 # prime numbers used to generate the keys
 # it is important to use prime numbers

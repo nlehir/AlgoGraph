@@ -6,18 +6,18 @@
 
 def exists_sublist(values_list: list, target_value: int) -> bool:
     """
-        Checks if the list of values can be used in order
-        to obtain a certain targe.
+    Checks if the list of values can be used in order
+    to obtain a certain targe.
 
-        :param values_list (list): list of available objects
-        :target_value (int): target
+    :param values_list (list): list of available objects
+    :target_value (int): target
 
-        EDIT THIS FUNCTION
+    EDIT THIS FUNCTION
     """
     if len(values_list) == 0:
         return target_value == 0
     else:
-        return (1==2) or (2==3)
+        return (1 == 2) or (2 == 3)
 
 
 def test_list_target(values: list, target_value: int):

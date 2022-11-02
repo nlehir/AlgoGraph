@@ -2,6 +2,7 @@
 Ciphering a string with a random key
 """
 from random import shuffle
+
 from termcolor import colored
 
 

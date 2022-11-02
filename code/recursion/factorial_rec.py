@@ -2,6 +2,7 @@
 Compute the factorial with a recursion
 """
 import math
+
 from termcolor import colored
 
 
@@ -23,12 +24,18 @@ def test_function(to_test):
     recursive = factorial_rec(to_test)
     math_function = math.factorial(to_test)
     if recursive == math_function:
-        print(colored(f"n={to_test} result ok: {math_function}", "blue", attrs=["bold"]))
+        print(
+            colored(f"n={to_test} result ok: {math_function}", "blue", attrs=["bold"])
+        )
     else:
-        print(colored(f"n={to_test} wrong result: {math_function} vs "+
-                      f"{recursive} (recursive)",
-                      "yellow",
-                      attrs=["bold"]))
+        print(
+            colored(
+                f"n={to_test} wrong result: {math_function} vs "
+                + f"{recursive} (recursive)",
+                "yellow",
+                attrs=["bold"],
+            )
+        )
 
 
 test_function(10)

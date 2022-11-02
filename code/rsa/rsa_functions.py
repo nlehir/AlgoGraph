@@ -8,9 +8,10 @@
 """
 
 import math
-from random import randrange
-from termcolor import colored
 from itertools import count, islice
+from random import randrange
+
+from termcolor import colored
 
 
 def generate_rsa_keys(p: int, q: int) -> tuple[int, int]:
@@ -175,7 +176,8 @@ def isPrime(n):
     if n < 2:
         return False
 
-    # we use a genertor to save memory
+    # we use a generator to save memory
+    # https://docs.python.org/3/library/itertools.html
     for number in islice(count(2), int(math.sqrt(n) - 1)):
         if n % number == 0:
             return False

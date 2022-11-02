@@ -2,6 +2,7 @@
     second ciphering method
 """
 from random import randrange
+
 from termcolor import colored
 
 

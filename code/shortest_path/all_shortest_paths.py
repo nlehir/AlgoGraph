@@ -31,7 +31,7 @@ for step in range(1, number_of_nodes + 1):
                 shtr_pths_to_ngbr = shortest_paths[neighbor]
                 if shtr_pths_to_ngbr != [] and len(shtr_pths_to_ngbr[0]) == step:
                     """
-                        EDIT
+                    EDIT
                     """
                     print(f"node : {node}")
                     print(f"neighbor : {neighbor}")
