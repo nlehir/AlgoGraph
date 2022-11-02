@@ -24,3 +24,6 @@ code/solutions/
 code/solutions/rsa/generate_keys_and_codes.py
 
 code/graphs/clique/archive/
+
+code/make_exercises.sh
+code/exercises/
