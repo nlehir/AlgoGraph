@@ -36,7 +36,7 @@ else:
 with open(f"crypted_messages/crypted_message_rsa_{index}.txt", "r") as code_txt:
     code = code_txt.read()
 
-print("\ncode : " + code)
+print(f"\ncode : {code}")
 
 decoded_text = rsa_functions.decipher_rsa(code, public_key, private_key)
-print("decoded text : " + decoded_text)
+print(f"decoded text : {decoded_text}")
