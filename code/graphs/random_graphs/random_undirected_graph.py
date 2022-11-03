@@ -3,27 +3,28 @@ Generating a random undirected graph
 """
 
 import random
-import networkx as nx
+
 import matplotlib.pyplot as plt
+import networkx as nx
 
 
 def generate_random_undirected_graph(n: int, p: int):
     """
-        Function used to generate a random undirected graph.
+    Function used to generate a random undirected graph.
 
-        :param n: number of nodes in the graph
-        :param p: number of edges in the graph
+    :param n: number of nodes in the graph
+    :param p: number of edges in the graph
 
-        Libraries used :
-        ----------------
-        networkx
-        matplotlib
+    Libraries used :
+    ----------------
+    networkx
+    matplotlib
 
     """
     G = nx.Graph()
 
     if p > n * (n - 1) / 2:
-        raise ValueError('The number of edges is too large !')
+        raise ValueError("The number of edges is too large !")
 
     # in an undirected graph, we dont need to consider the inverse of an edge
     """
@@ -67,11 +68,14 @@ def generate_random_undirected_graph(n: int, p: int):
 
     # visualize and save the graph
     graph_name = f"images/random_undirected_{n}_vx_{p}_edgs.pdf"
-    nx.draw(G,
-            node_size=node_sizes,
-            node_color=node_colors,
-            edge_color=edge_colors,
-            width=edge_widths)
+    nx.draw(
+        G,
+        node_size=node_sizes,
+        node_color=node_colors,
+        edge_color=edge_colors,
+        width=edge_widths,
+    )
     plt.savefig(graph_name)
+
 
 generate_random_undirected_graph(60, 130)

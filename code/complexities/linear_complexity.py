@@ -2,9 +2,10 @@
     measure the complexity of a simple loop
 """
 
-import matplotlib.pyplot as plt
 import os
 from time import time
+
+import matplotlib.pyplot as plt
 
 min_size = 1
 max_size = 10**7

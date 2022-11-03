@@ -2,8 +2,9 @@
    greedy algorithm to try to find a minimal dominating set
 """
 
-import pickle
 import os
+import pickle
+
 from plot_graph.plot_graph import plot_subset
 from test_dominating import test_dominating
 
@@ -83,6 +84,7 @@ def process_graph(graph_name: str) -> None:
                     graph_name,
                 )
     test_dominating(nodes, edges_list, selected_nodes)
+
 
 # params = read_params()
 # n_nodes = params[0]

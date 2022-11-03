@@ -1,5 +1,6 @@
-from plot_graph import plot_graph
 import pickle
+
+from plot_graph import plot_graph
 
 # edges is a list of all edges
 with open(f"data/edges", "rb") as f:

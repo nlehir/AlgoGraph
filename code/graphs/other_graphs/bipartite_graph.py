@@ -10,11 +10,8 @@ for node_1 in subset_1:
         edges.append((node_1, node_2))
 
 # save this simple graph
-dot = Graph(comment='Graph 1 : bipartite graph')
+dot = Graph(comment="Graph 1 : bipartite graph")
 for edge in edges:
-    dot.edge(str(edge[0]),
-             str(edge[1]),
-             color='darkolivegreen4',
-             penwidth='1.1')
-graph_name = 'graphs/bipartite'
+    dot.edge(str(edge[0]), str(edge[1]), color="darkolivegreen4", penwidth="1.1")
+graph_name = "graphs/bipartite"
 dot.render(graph_name)

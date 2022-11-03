@@ -2,28 +2,30 @@
 Generating a random directed graph
 """
 
-import numpy as np
 import random
-import networkx as nx
+
 import matplotlib.pyplot as plt
+import networkx as nx
+import numpy as np
+
 
 def generate_random_directed_graph(n: int, p: int):
     """
-        Function used to generate a random graph.
+    Function used to generate a random graph.
 
-        :param n: number of nodes in the graph
-        :param p: number of edges in the graph
+    :param n: number of nodes in the graph
+    :param p: number of edges in the graph
 
-        Libraries used :
-        ----------------
-        networkx
-        matplotlib
+    Libraries used :
+    ----------------
+    networkx
+    matplotlib
 
     """
     G = nx.DiGraph()
 
     if p > n * (n - 1):
-        raise ValueError('The number of edges is too large !')
+        raise ValueError("The number of edges is too large !")
 
     # in a directed graph, we need to consider the inverse of an edge
     all_edges = [{i, j} for i in range(1, n + 1) for j in range(1, n + 1)]
@@ -66,11 +68,14 @@ def generate_random_directed_graph(n: int, p: int):
 
     # visualize and save the graph
     graph_name = f"images/random_directed_{n}_vx_{p}_edgs.pdf"
-    nx.draw(G,
-            node_size=node_sizes,
-            node_color=node_colors,
-            edge_color=edge_colors,
-            width=edge_widths)
+    nx.draw(
+        G,
+        node_size=node_sizes,
+        node_color=node_colors,
+        edge_color=edge_colors,
+        width=edge_widths,
+    )
     plt.savefig(graph_name)
+
 
 generate_random_directed_graph(10, 30)

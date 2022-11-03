@@ -1,6 +1,6 @@
-from termcolor import colored
 import networkx as nx
 from networkx.algorithms.dominating import is_dominating_set
+from termcolor import colored
 
 
 def test_dominating(nodes, edges_list, selected_nodes) -> None:

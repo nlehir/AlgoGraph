@@ -1,9 +1,10 @@
-import numpy as np
 import pickle
-import numpy as np
 import random
+
+import numpy as np
 from graphviz import Graph
-dot = Graph(comment='Graph used to study the dominating set problem')
+
+dot = Graph(comment="Graph used to study the dominating set problem")
 
 
 # number of nodes
@@ -34,17 +35,14 @@ print(edges_list)
 print(len(edges_list))
 
 for edge in edges_list:
-    dot.edge(str(edge[0]),
-             str(edge[1]),
-             color='darkolivegreen4',
-             penwidth='1.1')
+    dot.edge(str(edge[0]), str(edge[1]), color="darkolivegreen4", penwidth="1.1")
 
-with open('data/exercise_2_successors', 'wb') as f:
+with open("data/exercise_2_successors", "wb") as f:
     pickle.dump(successors, f)
 
-with open('data/exercise_2_edges', 'wb') as f:
+with open("data/exercise_2_edges", "wb") as f:
     pickle.dump(edges_list, f)
 
 # visualize the graph
-graph_name = 'graphs/exercise_2'
+graph_name = "graphs/exercise_2"
 dot.render(graph_name)

@@ -1,7 +1,7 @@
-import numpy as np
 import matplotlib.pyplot as plt
-from insertion_sort import insertionSort
+import numpy as np
 
+from insertion_sort import insertionSort
 
 """
     We will statistically check the number of
@@ -32,8 +32,10 @@ def number_of_operations(n: int) -> float:
         """
         counters.append(3)
     average = 5
-    print(f"for n={n}, {average} operations " +
-          f"performed on average on {number_of_tests} instances.")
+    print(
+        f"for n={n}, {average} operations "
+        + f"performed on average on {number_of_tests} instances."
+    )
     return average
 
 
@@ -42,10 +44,10 @@ def number_of_operations(n: int) -> float:
     for several values of n
 """
 n_max = 200
-step = int(n_max/10)
+step = int(n_max / 10)
 n_range = range(1, n_max, step)
 experimental_values = [number_of_operations(n) for n in n_range]
-plt.plot(n_range, experimental_values, 'o', color="teal", label="experiment")
+plt.plot(n_range, experimental_values, "o", color="teal", label="experiment")
 
 """
     Compute theoretical values
@@ -60,11 +62,7 @@ theoretical_values = [2**n for n in values_of_n]
     Plot the results.
 """
 plt.xticks(range(0, n_max, step))
-plt.plot(values_of_n,
-         theoretical_values,
-         '--r',
-         color="maroon",
-         label="theoretical")
+plt.plot(values_of_n, theoretical_values, "--r", color="maroon", label="theoretical")
 plt.legend(loc="best")
 plt.title("Average-case complexity of Insertion Sort")
 plt.xlabel("size of the list to sort (integer)")

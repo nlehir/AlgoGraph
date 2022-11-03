@@ -19,7 +19,7 @@ def bad_fibonacci(n):
 print(bad_fibonacci(30))
 
 pr.disable()
-stats_file = open(f"{os.path.basename(__file__)}.txt", 'w')
+stats_file = open(f"{os.path.basename(__file__)}.txt", "w")
 sys.stdout = stats_file
-pr.print_stats(sort='time')
+pr.print_stats(sort="time")
 sys.stdout = sys.__stdout__

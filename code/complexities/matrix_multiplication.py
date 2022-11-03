@@ -2,9 +2,10 @@
     measure the complexity of matrix multiplication
 """
 
+from time import time
+
 import matplotlib.pyplot as plt
 import numpy as np
-from time import time
 
 matrix_sizes = range(0, 5000, 500)
 times = list()

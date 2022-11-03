@@ -1,8 +1,9 @@
-import numpy as np
-import os
 import cProfile
+import os
 import sys
 import time
+
+import numpy as np
 
 pr = cProfile.Profile()
 pr.enable()
@@ -22,7 +23,7 @@ for n in matrix_sizes:
     print(n, computation_time)
 
 pr.disable()
-stats_file = open(f"{os.path.basename(__file__)}.txt", 'w')
+stats_file = open(f"{os.path.basename(__file__)}.txt", "w")
 sys.stdout = stats_file
-pr.print_stats(sort='time')
+pr.print_stats(sort="time")
 sys.stdout = sys.__stdout__

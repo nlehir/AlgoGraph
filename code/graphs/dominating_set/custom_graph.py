@@ -1,5 +1,6 @@
-import pickle
 import os
+import pickle
+
 from plot_graph.plot_graph import plot_initial_graph
 
 edges = [

@@ -1,5 +1,5 @@
-import networkx as nx
 import matplotlib.pyplot as plt
+import networkx as nx
 
 # plotting params
 alpha = 0.7
