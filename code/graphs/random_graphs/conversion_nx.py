@@ -1,5 +1,4 @@
 import networkx as nx
-import matplotlib.pyplot as plt
 from networkx.convert import to_dict_of_lists, to_edgelist
 from networkx.convert_matrix import to_numpy_array
 

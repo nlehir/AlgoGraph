@@ -14,10 +14,11 @@ times = list()
 
 for size in sizes:
     print(str(size) + " multiplications")
-    t0 = time()
+    tic = time()
     for j in range(size):
         x = 2 * 3
-    times.append(time() - t0)
+    toc = time()
+    times.append(toc - tic)
 
 
 title = "Computation time of a sequence of multiplications"
@@ -28,5 +29,5 @@ plt.ylabel("computation time (seconds)")
 plt.title(title)
 if not os.path.exists("./images/"):
     os.mkdir("./images")
-plt.savefig("images/" + filename)
+plt.savefig(f"images/{filename}")
 plt.close()

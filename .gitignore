@@ -27,3 +27,5 @@ code/graphs/clique/archive/
 
 code/make_exercises.sh
 code/exercises/
+
+code/graphs/dominating_set/images/*/*.pdf
