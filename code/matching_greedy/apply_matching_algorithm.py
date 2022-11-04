@@ -2,8 +2,9 @@
     greedy algorithm to find a minimal dominant set
 """
 
-import pickle
 import os
+import pickle
+
 from matching_functions import match_greedy
 from read_params import read_params
 
@@ -29,7 +30,7 @@ def match_graph(nb_nodes: int, max_nb_of_successors: int) -> None:
     # clean directory
     for image in os.listdir(dir_name):
         if "initial" not in image:
-            os.remove(dir_name+image)
+            os.remove(dir_name + image)
 
     # apply greedy algorithm
     match_greedy(edges_list, nodes, dir_name)

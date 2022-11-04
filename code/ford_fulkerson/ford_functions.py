@@ -1,7 +1,8 @@
-import numpy as np
 import networkx
-from plot_graphs import build_residual_graph, show_residual_network_nx, highlight_path
+import numpy as np
 from termcolor import colored
+
+from plot_graphs import build_residual_graph, highlight_path, show_residual_network_nx
 
 
 def apply_ford_fulkerson(

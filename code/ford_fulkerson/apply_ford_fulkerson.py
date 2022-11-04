@@ -2,9 +2,10 @@
 Load flow network and apply Ford Fulkerson
 """
 
-import pickle
-import ford_functions
 import os
+import pickle
+
+import ford_functions
 from read_params import read_params
 
 

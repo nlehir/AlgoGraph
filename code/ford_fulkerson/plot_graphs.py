@@ -2,8 +2,8 @@
     Utility functions in order to
     visualize the graphs
 """
-import networkx as nx
 import matplotlib.pyplot as plt
+import networkx as nx
 import numpy as np
 
 

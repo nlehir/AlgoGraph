@@ -1,12 +1,13 @@
 import os
 import pickle
+
+import matplotlib.pyplot as plt
+import networkx as nx
 import numpy as np
 
-# from random import randint
-
-import networkx as nx
-import matplotlib.pyplot as plt
 from read_params import read_params
+
+# from random import randint
 
 
 """

@@ -3,14 +3,17 @@ Load flow network and apply Ford Fulkerson
 # TODO: refacto <30-09-22, yourname> #
 """
 
-import pickle
-import ford_functions
 import os
+import pickle
+
+import ford_functions
 
 
 def apply_algorithm(nb_nodes_group_1, nb_nodes_group_2, nb_edges):
-    flow_network = f"network_{nb_nodes_group_1}_{nb_nodes_group_2}_nodes_edges_{nb_edges}"
-    dir_name = "images/" + flow_network+"/"
+    flow_network = (
+        f"network_{nb_nodes_group_1}_{nb_nodes_group_2}_nodes_edges_{nb_edges}"
+    )
+    dir_name = "images/" + flow_network + "/"
 
     with open("data/" + flow_network + "_nodes_1", "rb") as f:
         nodes_1 = pickle.load(f)
@@ -40,7 +43,7 @@ def apply_algorithm(nb_nodes_group_1, nb_nodes_group_2, nb_edges):
     # clean directory
     for image in os.listdir(dir_name):
         if "initial" not in image:
-            os.remove(dir_name+image)
+            os.remove(dir_name + image)
 
     # apply Ford Fulkerson
     ford_functions.apply_ford_fulkerson(
@@ -51,7 +54,7 @@ def apply_algorithm(nb_nodes_group_1, nb_nodes_group_2, nb_edges):
         sink_capacities,
         G,
         pos,
-        dir_name
+        dir_name,
     )
 
 

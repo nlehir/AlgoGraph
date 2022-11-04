@@ -1,9 +1,16 @@
-import ipdb
-import numpy as np
 import os
-import networkx as nx
+
+import ipdb
 import matplotlib.pyplot as plt
-from plot_graphs import build_residual_graph, show_residual_network_nx, highlight_path, show_flow
+import networkx as nx
+import numpy as np
+
+from plot_graphs import (
+    build_residual_graph,
+    highlight_path,
+    show_flow,
+    show_residual_network_nx,
+)
 
 
 def apply_ford_fulkerson(
@@ -14,18 +21,18 @@ def apply_ford_fulkerson(
     sink_capacities,
     G,
     pos,
-    dir_name
+    dir_name,
 ):
     """
-        Apply Ford Fulkerson algorithm on a matching problem.
+    Apply Ford Fulkerson algorithm on a matching problem.
 
-        The algorithm is the same as in the previous example (general case).
+    The algorithm is the same as in the previous example (general case).
 
-        There are some minor differences in the implementation in order to
-        produce a better visualization.
+    There are some minor differences in the implementation in order to
+    produce a better visualization.
     """
 
-    nodes = nodes_1+nodes_2
+    nodes = nodes_1 + nodes_2
     # build a complete matrix of capacities
     capacities = np.zeros((len(nodes) + 2, len(nodes) + 2))
     # add capacities between source and inner nodes
@@ -33,7 +40,7 @@ def apply_ford_fulkerson(
     # add capacities between inner nodes and sink
     capacities[1:-1, -1] = sink_capacities
     # add capacities between inner nodes
-    capacities[1: len(nodes) + 1, 1: len(nodes) + 1] = inner_capacities
+    capacities[1 : len(nodes) + 1, 1 : len(nodes) + 1] = inner_capacities
 
     # initial flow set to 0
     # the total number of vertices in the graph
@@ -47,35 +54,43 @@ def apply_ford_fulkerson(
         print("===================\nAlgorithm step : {}".format(step))
 
         # compute the residual capacities
-        residual_capacities = capacities-flow
+        residual_capacities = capacities - flow
         # print(flow)
 
         # show the residual network
         # it might have more edges since we changed the capacities
-        G_residual = build_residual_graph(G,
-                                          nodes_1,
-                                          nodes_2,
-                                          residual_capacities,
-                                          capacities)
-        show_residual_network_nx(G_residual, pos, residual_capacities,
-                                 capacities, nodes_1, nodes_2, dir_name, step)
+        G_residual = build_residual_graph(
+            G, nodes_1, nodes_2, residual_capacities, capacities
+        )
+        show_residual_network_nx(
+            G_residual,
+            pos,
+            residual_capacities,
+            capacities,
+            nodes_1,
+            nodes_2,
+            dir_name,
+            step,
+        )
 
         # first look for possible augmenting paths
         augmenting_paths = find_augmenting_path(residual_capacities)
         if augmenting_paths:
             print("found augmenting paths in residual graph")
             # update the flow
-            flow = augment_flow(flow,
-                                residual_capacities,
-                                augmenting_paths,
-                                dir_name,
-                                G_residual,
-                                pos,
-                                step,
-                                nodes,
-                                nodes_1,
-                                nodes_2)
-            residual_capacities = capacities-flow
+            flow = augment_flow(
+                flow,
+                residual_capacities,
+                augmenting_paths,
+                dir_name,
+                G_residual,
+                pos,
+                step,
+                nodes,
+                nodes_1,
+                nodes_2,
+            )
+            residual_capacities = capacities - flow
 
             # check if the flow matrix is really a flow
             check_flow(flow, nodes, capacities)
@@ -99,12 +114,10 @@ def apply_ford_fulkerson(
             break
 
 
-
-
 def check_flow(flow, nodes, capacities):
     """
-        Check if the flow complies with the constraints
-        of a flow network
+    Check if the flow complies with the constraints
+    of a flow network
     """
     print("---\nchecking flow")
     inner_flow = flow[1:-1, 1:-1]
@@ -147,22 +160,31 @@ def check_flow(flow, nodes, capacities):
     else:
         print("Flow not ok ! The flow on one edge exceeds its capacity.")
 
-#    # -------------
-#    # Fourth check
-#    # -------------
-#    # the flow must be positive
-#    comparison_4 = flow >= 0
-#    flow_check_4 = comparison_4.all()
-#    if flow_check_4:
-#        print("Fourth check ok : flow is positive.")
-#    else:
-#        print("Flow not ok ! The flow is not positive.")
+    #    # -------------
+    #    # Fourth check
+    #    # -------------
+    #    # the flow must be positive
+    #    comparison_4 = flow >= 0
+    #    flow_check_4 = comparison_4.all()
+    #    if flow_check_4:
+    #        print("Fourth check ok : flow is positive.")
+    #    else:
+    #        print("Flow not ok ! The flow is not positive.")
     print("---\n")
 
 
-def augment_flow(flow, residual_capacities, augmenting_paths, dir_name,
-                 G_residual,
-                 pos, step, nodes, nodes_1, nodes_2):
+def augment_flow(
+    flow,
+    residual_capacities,
+    augmenting_paths,
+    dir_name,
+    G_residual,
+    pos,
+    step,
+    nodes,
+    nodes_1,
+    nodes_2,
+):
     print("---\naugment flow")
 
     # -----------
@@ -176,9 +198,9 @@ def augment_flow(flow, residual_capacities, augmenting_paths, dir_name,
     # We take the capacities from the source to the sink
     # without the sink.
     augmenting_path_capacities = []
-    for node_index in range(len(augmenting_path)-1):
+    for node_index in range(len(augmenting_path) - 1):
         node_1 = augmenting_path[node_index]
-        node_2 = augmenting_path[node_index+1]
+        node_2 = augmenting_path[node_index + 1]
         # print(node_1)
         # print(node_2)
         augmenting_path_capacities.append(residual_capacities[node_1][node_2])
@@ -188,17 +210,26 @@ def augment_flow(flow, residual_capacities, augmenting_paths, dir_name,
     print(f"augmenting path capacity : {path_capacity}")
 
     # highlight this path in the graph
-    highlight_path(G_residual, pos, augmenting_path, dir_name, step,
-                   nodes, nodes_1, nodes_2, path_capacity)
+    highlight_path(
+        G_residual,
+        pos,
+        augmenting_path,
+        dir_name,
+        step,
+        nodes,
+        nodes_1,
+        nodes_2,
+        path_capacity,
+    )
 
     # -----
     # finally augment the flow
-    nb_nodes = len(nodes)+2
+    nb_nodes = len(nodes) + 2
     added_flow_value = path_capacity
     added_flow = np.zeros((nb_nodes, nb_nodes))
-    for node_index in range(len(augmenting_path)-1):
+    for node_index in range(len(augmenting_path) - 1):
         node_1 = augmenting_path[node_index]
-        node_2 = augmenting_path[node_index+1]
+        node_2 = augmenting_path[node_index + 1]
         added_flow[node_1, node_2] = added_flow_value
         added_flow[node_2, node_1] = -added_flow_value
     return flow + added_flow
@@ -206,11 +237,11 @@ def augment_flow(flow, residual_capacities, augmenting_paths, dir_name,
 
 def find_augmenting_path(residual_capacities):
     """
-        Look for an augmenting path in the residual graph
+    Look for an augmenting path in the residual graph
     """
     # we want to go from the source to the sink
     # using edges in the residual graph
-    last_index = residual_capacities.shape[1]-1
+    last_index = residual_capacities.shape[1] - 1
     print("---\nLook for augmenting paths in the residual graph")
     print("source = 0")
     print(f"sink = {last_index}")
@@ -227,15 +258,14 @@ def find_augmenting_path(residual_capacities):
         # node 2 is on rank 3
         # node len(nodes) -1 is on rank len(nodes)
         # sink is on rank len(nodes)+1
-        next_available_nodes = np.where(residual_capacities[vertex,
-                                                            :])[0]
+        next_available_nodes = np.where(residual_capacities[vertex, :])[0]
         for next_node in next_available_nodes:
             # print("next node {}".format(next_node))
             if next_node == last_index:
                 # print(f"found augmenting path : {path+[next_node]}")
-                augmenting_paths.append(path+[next_node])
+                augmenting_paths.append(path + [next_node])
             else:
                 # avoid loops !
                 if next_node not in path:
-                    stack.append((next_node, path+[next_node]))
+                    stack.append((next_node, path + [next_node]))
     return augmenting_paths

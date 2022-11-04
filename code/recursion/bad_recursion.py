@@ -1,6 +1,7 @@
 import sys
 
-sys.setrecursionlimit(int(1e5))
+# sys.setrecursionlimit(int(1e5))
+sys.setrecursionlimit(int(1e3))
 
 
 def badrec(x, depth):
