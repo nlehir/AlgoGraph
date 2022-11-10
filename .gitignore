@@ -20,8 +20,8 @@ code/*/.mypy_cache/*
 code/recursion/exponentiation/__pycache__/
 code/misc/
 
-code/solutions/
 code/solutions/rsa/generate_keys_and_codes.py
+code/solutions/**/*.pdf
 
 code/graphs/clique/archive/
 
