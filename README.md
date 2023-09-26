@@ -1,7 +1,7 @@
 # Algorithmic complexity and graphs
 
-Slides,  project description, code exercices
-and other documents for 5th year students at epitech
+Slides, project description, code exercices
+and other documents for 5th year students at Epitech
 for the course "Algorithmic complexity and graphs".
 
 ## slides
