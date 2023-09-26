@@ -1,7 +1,7 @@
 # Algorithmic complexity and graphs
 
-This repository will contain the slides, the project description,
-code exercices and other documents for 5th year students at epitech
+Slides,  project description, code exercices
+and other documents for 5th year students at epitech
 for the course "Algorithmic complexity and graphs".
 
 ## slides
