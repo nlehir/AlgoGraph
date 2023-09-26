@@ -22,6 +22,7 @@ code/misc/
 
 code/solutions/rsa/generate_keys_and_codes.py
 code/solutions/**/*.pdf
+code/solutions/
 
 code/graphs/clique/archive/
 
