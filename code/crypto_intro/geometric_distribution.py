@@ -15,7 +15,7 @@ print(p)
 q = 1 - p
 
 
-def cumulative_distribution_function(k):
+def cumulative_distribution_function(k) -> float:
     return 1 - pow(q, k)
 
 
