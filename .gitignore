@@ -19,7 +19,6 @@ code/vectorization/profile.prof
 code/*/.ipynb_checkpoints/
 code/*/.mypy_cache/*
 code/recursion/exponentiation/__pycache__/
-code/misc/
 
 code/solutions/rsa/generate_keys_and_codes.py
 code/solutions/**/*.pdf
