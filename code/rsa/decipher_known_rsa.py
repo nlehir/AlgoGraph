@@ -25,7 +25,7 @@ print(f"private_key : {private_key}")
 with open("crypted_messages/crypted_message_rsa.txt", "r") as code_txt:
     code = code_txt.read()
 
-print("code : " + code)
+print(f"code : {code}")
 
 deciphered_text = rsa_functions.decipher_rsa(code, public_key, private_key)
 with open("decrypted_messages/decrypted_message_rsa.txt", "w") as text_file:
