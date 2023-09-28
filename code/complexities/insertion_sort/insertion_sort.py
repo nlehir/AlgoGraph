@@ -7,7 +7,7 @@ def verboseprint(var, verbose):
         print(var)
 
 
-def insertionSort(llist: list, verbose: bool = True) -> int:
+def insertion_sort(llist: list, verbose: bool = True) -> int:
     """
     In Python you can modify objects defined
     outside the scope of a function
@@ -45,5 +45,9 @@ def insertionSort(llist: list, verbose: bool = True) -> int:
     return counter
 
 
-llist = [10, 2, 11, 17, 5, 3, 12, 1]
-insertionSort(llist)
+def main() -> None:
+    llist = [10, 2, 11, 17, 5, 3, 12, 1]
+    insertion_sort(llist)
+
+if __name__ == "__main__":
+    main()

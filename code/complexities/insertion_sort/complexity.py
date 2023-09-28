@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from insertion_sort import insertionSort
+from insertion_sort import insertion_sort
 
 """
     We will statistically check the number of
@@ -26,7 +26,7 @@ def number_of_operations(n: int) -> float:
     """
     counters = list()
     for _ in range(number_of_tests):
-        uniform_llist = np.random.randint(0, 1001, n)
+        uniform_llist = np.random.randint(0, 1001, n).tolist()
         """
         EDIT
         """
@@ -62,7 +62,7 @@ theoretical_values = [2**n for n in values_of_n]
     Plot the results.
 """
 plt.xticks(range(0, n_max, step))
-plt.plot(values_of_n, theoretical_values, "--r", color="maroon", label="theoretical")
+plt.plot(values_of_n, theoretical_values, "--r", label="theoretical")
 plt.legend(loc="best")
 plt.title("Average-case complexity of Insertion Sort")
 plt.xlabel("size of the list to sort (integer)")

@@ -34,10 +34,10 @@ a1 = 5.6
 P2 = [2, 1, 1, 8, 99, 3576, 87, 0.1, 0, 123, 9876534517]
 a2 = 3
 
-P3 = [0, 1, 12567, 98, 89, 76381, 0, 0, 176, 0, 1987]
+P3 = [1, 12567, 98, 89, 76381, 0, 0, 176, 0, 1987]
 a3 = 0.12
 
-P4 = [0, 1]
+P4 = [1]
 a4 = 36
 
 Polynoms_to_test = [P1, P2, P3, P4]
@@ -50,7 +50,7 @@ for i in range(len(Polynoms_to_test)):
     horner_eval = horner(Polynoms_to_test[i], floats_to_test[i])
     np_eval = np.polyval(Polynoms_to_test[i], floats_to_test[i])
     print("\n------------------------------------------------------------")
-    print(f"Coefficient of the polynom : {Polynoms_to_test[i]}")
+    print(f"Coefficient of the polynom (highest order first) : {Polynoms_to_test[i]}")
     print(f"Float : {floats_to_test[i]}")
     print(f"Horner : {horner_eval}")
     print(f"Numpy : {np_eval}")
