@@ -8,6 +8,7 @@ mypy
 networkx
 numpy
 pytest
+scikit-learn
 scipy
 snakeviz
 termcolor

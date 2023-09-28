@@ -4,8 +4,8 @@ Data generation for OLS speed benchmarking
 
 import numpy as np
 
-from speed_benchmarks.config import LINEAR_TERM_RANGE, INPUTS_TYPE
-from speed_benchmarks.prng import rng
+from config import LINEAR_TERM_RANGE, INPUTS_TYPE
+from prng import rng
 
 
 def generate_inputs(n: int, d: int) -> np.ndarray:

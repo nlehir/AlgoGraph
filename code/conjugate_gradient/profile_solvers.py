@@ -13,8 +13,8 @@ import numpy as np
 from scipy.sparse.linalg import cg
 from sklearn.linear_model import LinearRegression
 
-from speed_benchmarks.config import SIGMA
-from speed_benchmarks.data_generation import generate_data
+from config import SIGMA
+from data_generation import generate_data
 
 
 def compute_mse(y_pred: np.ndarray, y_true: np.ndarray) -> float:

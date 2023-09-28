@@ -3,13 +3,12 @@ Plot the benchmarking results
 """
 
 import os
-from sre_constants import IN
 
 import matplotlib.pyplot as plt
 import xarray as xa
 
-from speed_benchmarks.config import INPUTS_TYPE, LINEAR_TERM_RANGE, N_REPEATS, SIGMA, INPUTS_TYPE
-from utils.utils import clean_filename, create_folder_if_missing, load_pickle
+from config import INPUTS_TYPE, LINEAR_TERM_RANGE, N_REPEATS, SIGMA, INPUTS_TYPE
+from utils import clean_filename, create_folder_if_missing, load_pickle
 
 
 def plot_results_one_variable_one_n(
@@ -25,7 +24,7 @@ def plot_results_one_variable_one_n(
 
 def plot_results_one_variable(variable: str) -> None:
     # laod data
-    folder = os.path.join("speed_benchmarks", "results")
+    folder = "results"
     scikit_path = os.path.join(folder, f"{variable}_scikit_sigma_{SIGMA}")
     cg_path = os.path.join(folder, f"{variable}_cg_sigma_{SIGMA}")
     scikit_path = f"{clean_filename(scikit_path)}.pickle"
@@ -88,7 +87,7 @@ def plot_results_one_variable(variable: str) -> None:
     plt.tight_layout()
 
     # save
-    folder = os.path.join("speed_benchmarks", "images")
+    folder = "images"
     fig_name = f"{variable}_sigma_{SIGMA}_{INPUTS_TYPE}_inputs"
     fig_name = clean_filename(fig_name)
 
