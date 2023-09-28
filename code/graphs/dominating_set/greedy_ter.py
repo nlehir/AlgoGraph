@@ -114,10 +114,17 @@ def process_graph(graph_name: str) -> None:
     test_dominating(nodes, edges_list, selected_nodes)
 
 
-process_graph("exercise")
+def main() -> None:
+    # params = read_params()
+    # n_nodes = params[0]
+    # max_successors = params[1]
+    # parameters = f"n={n_nodes}_maxs={max_successors}"
+    # process_graph(parameters)
 
-# params=read_params()
-# n_nodes =params[0]
-# max_successors = params[1]
-# parameters = f"n={n_nodes}_maxs={max_successors}"
-# process_graph(parameters)
+    # process_graph("custom")
+
+    process_graph("exercise")
+
+
+if __name__ == "__main__":
+    main()
