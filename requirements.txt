@@ -9,4 +9,5 @@ networkx
 numpy
 pytest
 scipy
+snakeviz
 termcolor
