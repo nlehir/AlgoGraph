@@ -46,8 +46,12 @@ def process_network(nb_nodes: int, nb_edges: int, capacity_max: int) -> None:
     )
 
 
-params = read_params()
-nb_nodes = int(params["nb_nodes"])
-nb_edges = int(params["nb_edges"])
-capacity_max = int(params["capacity_max"])
-process_network(nb_nodes, nb_edges, capacity_max)
+def main() -> None:
+    params = read_params()
+    nb_nodes = int(params["nb_nodes"])
+    nb_edges = int(params["nb_edges"])
+    capacity_max = int(params["capacity_max"])
+    process_network(nb_nodes, nb_edges, capacity_max)
+
+if __name__ == "__main__":
+    main()
