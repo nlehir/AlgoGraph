@@ -7,6 +7,7 @@ import pickle
 
 from plot_graph.plot_graph import plot_subset
 from test_dominating import test_dominating
+from read_params import read_params
 
 
 def process_graph(graph_name: str) -> None:

@@ -7,6 +7,7 @@ import pickle
 
 from plot_graph.plot_graph import plot_subset
 from test_dominating import test_dominating
+from read_params import read_params
 
 
 def process_graph(graph_name: str) -> None:
@@ -65,10 +66,10 @@ def process_graph(graph_name: str) -> None:
         """
         EDIT LOOP
         """
-        for item in neighbors_reduced:
-            for ngbr in neighbors_reduced[item]:
+        for node in neighbors_reduced:
+            for ngbr in neighbors_reduced[node]:
                 if ngbr in dominated_nodes:
-                    print(f"remove {ngbr} from neighbors of {item}")
+                    print(f"remove {ngbr} from neighbors of {node}")
                     pass
 
         neighbors_in_reduced_graph = {
