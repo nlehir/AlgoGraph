@@ -12,7 +12,6 @@ import random
 
 import matplotlib.pyplot as plt
 import networkx as nx
-
 from read_params import read_params
 
 if not os.path.exists("data/"):

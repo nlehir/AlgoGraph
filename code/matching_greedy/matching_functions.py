@@ -3,11 +3,16 @@ Functions used for the greedy matching algorithm
 """
 import matplotlib.pyplot as plt
 
-# from graphviz import Graph
 import networkx as nx
+from test_matching import test_matching
 
 
-def show_matching(nodes, edges_list, matching, index, matching_length, dir_name):
+def show_matching(
+        nodes: list[int],
+        edges_list: list[list],
+        matching: list[set],
+        index: int,
+        dir_name: str) -> None:
     """
     function to highlight the matching edges
     and save the graph image
@@ -52,7 +57,7 @@ def show_matching(nodes, edges_list, matching, index, matching_length, dir_name)
 
     # visualize the graph
     graph_name = dir_name + "match_greedy_" + str(index) + ".pdf"
-    graph_title = f"\nMatching size: {matching_length}\nAlgo step: {index}\nNb nodes: {len(nodes)}"
+    graph_title = f"\nMatching size: {len(matching)}\nAlgo step: {index}\nNb nodes: {len(nodes)}"
 
     plt.title(graph_title, fontsize=9)
     # we give a seed to the layout engine
@@ -102,10 +107,14 @@ def show_matching(nodes, edges_list, matching, index, matching_length, dir_name)
     plt.close()
 
 
-def match_greedy(edges_list: list, nodes: list, dir_name: str) -> None:
+def match_greedy(
+        edges_list: list[list],
+        nodes: list[int],
+        dir_name: str,
+        ) -> None:
     """
     Apply greedy algorithm on the generated graph.
-    EDIT THIS FUNCTION, it contains some mistakes.
+    EDIT: add the algorithm
     """
     print("\n======")
     print("greedy algorithm")
@@ -113,32 +122,23 @@ def match_greedy(edges_list: list, nodes: list, dir_name: str) -> None:
     matched_nodes = list()
     matching = list()
     index = 1
-    for edge in edges_list:
-        print("\n----")
-        print(edge)
-        if [0] in matched_nodes:
-            print(f"node {edge[0]} already matched")
-        elif [1] in matched_nodes:
-            print(f"node {edge[1]} already matched")
-        else:
-            # add the nodes to the list of matched nodes
-            matched_nodes += [10, 11]
-            matching.append(set([0, 1]))
-            print("add edge")
-            print("matched_nodes")
-            print(matched_nodes)
-            print("matching")
-            print(matching)
-            matching_length = len(matching)
-            show_matching(nodes, edges_list, matching, index, matching_length, dir_name)
-        # increment algorithm index
-        index += 1
+    show_matching(
+            nodes=nodes,
+            edges_list=edges_list,
+            matching=matching,
+            index=index,
+            dir_name=dir_name,
+            )
 
-    print(f"\n====\nfinal matching length : {matching_length}")
-    print(f"initial number of nodes : {len(nodes)}")
-    print(f"number of unmatched nodes : {len(nodes)-len(matched_nodes)}")
-    # quick text
+    print(f"number of nodes in matching: {2*len(matching)}")
+    # quick test
     if len(matching) * 2 == len(matched_nodes):
         print("number of matched nodes equals 2 times size of matching : ok")
     else:
         print("inconsistent number of edges in the matching and matched nodes")
+
+    test_matching(
+            nodes=nodes,
+            edges_list=edges_list,
+            matching=matching,
+            )

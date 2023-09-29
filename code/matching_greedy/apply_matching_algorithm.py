@@ -36,7 +36,11 @@ def match_graph(nb_nodes: int, max_nb_of_successors: int) -> None:
     match_greedy(edges_list, nodes, dir_name)
 
 
-params = read_params()
-nb_nodes = params[0]
-max_successors = params[1]
-match_graph(nb_nodes, max_successors)
+def main() -> None:
+    params = read_params()
+    nb_nodes = params[0]
+    max_successors = params[1]
+    match_graph(nb_nodes, max_successors)
+
+if __name__ == "__main__":
+    main()
