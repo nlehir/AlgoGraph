@@ -18,7 +18,7 @@ def cipher_2(message, key_size):
     :param key_size (int): size of the ciphering key
     :returns crypted_message (str): ciphered message
     """
-    key = [randrange(1, 27) for i in range(key_size)]
+    key = [randrange(1, 27) for _ in range(key_size)]
     print(f"key : {key}")
     crypted_message = ""
     subkey = 0
@@ -30,11 +30,11 @@ def cipher_2(message, key_size):
             """
             EDIT HERE
             """
-            new_index = (ascii_index - 65) * 26 + 65
+            new_index = 1
+            # change the subkey
+            subkey = 1
             # convert back to string
             crypted_message += chr(new_index)
-            # change the subkey
-            subkey = (subkey + 1) % key_size
         else:
             crypted_message += character
     with open("crypted_messages/crypted_message_2.txt", "w") as text_file:
