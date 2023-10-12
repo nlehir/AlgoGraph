@@ -17,13 +17,14 @@ def cipher(message: str) -> str:
     :param message (str): message to cipher
     :returns crypted_message (str): ciphered message
     """
-    key: list = [i for i in range(26)]
-    # shuffle the key in order to have a random permutation
     """
         EDIT HERE
     """
+    # shuffle the key in order to have a random permutation
+    key: list = [i for i in range(26)]
     print(f"key : {key}")
     crypted_message = ""
+    # loop over the characters of the input message
     for character in message:
         # encode each string as an integer (here ord returns the unicode code
         # point for a one character string)
@@ -34,7 +35,7 @@ def cipher(message: str) -> str:
             EDIT THIS LOOP
             """
             # use the key to change the ascii index
-            new_index = key[4] + 65
+            new_index = 1
             # the chr function returns the unicode string for a given integer
             new_letter = chr(new_index)
             # in python you can concatenante strings with +
