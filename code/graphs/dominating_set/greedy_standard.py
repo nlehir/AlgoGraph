@@ -60,29 +60,17 @@ def process_graph(graph_name: str) -> None:
     dominated_nodes = list()
     step = 0
 
-    for node in sorted_nodes:
-        """
-        EDIT LOOP
-        """
-        # stop if the set is dominating
-        if node not in dominated_nodes:
-            step += 1
-            # update our selected subset
-            selected_nodes.append(1)
-            print(f"\nadd {node} to the set of selected nodes")
-            # update the list of dominated nodes
-            dominated_nodes.append(node)
-            print(f"add {node} to the list of dominated nodes")
-            # see how many more nodes we have to dominate
-            print(f"still have to dominate {n_nodes-len(dominated_nodes)} nodes")
-            plot_subset(
-                step,
-                sorted_nodes,
-                edges_list,
-                dominated_nodes,
-                selected_nodes,
-                graph_name,
-            )
+    """
+    EDIT: qdd the algorithm
+    """
+    plot_subset(
+        step,
+        sorted_nodes,
+        edges_list,
+        dominated_nodes,
+        selected_nodes,
+        graph_name,
+    )
     test_dominating(nodes, edges_list, selected_nodes)
 
 
