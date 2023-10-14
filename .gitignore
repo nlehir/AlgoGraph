@@ -21,6 +21,8 @@ code/*/.ipynb_checkpoints/
 code/*/.mypy_cache/*
 code/recursion/exponentiation/__pycache__/
 
+code/ford_fulkerson/images/**/*.pdf
+
 code/solutions/rsa/generate_keys_and_codes.py
 code/solutions/**/*.pdf
 code/solutions/
