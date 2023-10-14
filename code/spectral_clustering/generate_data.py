@@ -6,6 +6,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.spatial.distance import cdist
 
 
 def main() -> None:
@@ -30,14 +31,7 @@ def main() -> None:
     plt.close()
 
     # build a matrix of distances
-    distances = np.zeros((nb_points, nb_points))
-    for i in range(nb_points):
-        for j in range(nb_points):
-            point_i = data[i, :]
-            point_j = data[j, :]
-            distances[i, j] = np.linalg.norm(point_i-point_j)
-
-
+    distances = cdist(XA=data, XB=data)
     # we use the standard deviation to compute the similarity
     similarity = np.exp(-distances/distances.std())
     print(f"distances standard deviation: {distances.std()}")

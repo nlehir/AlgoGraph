@@ -14,15 +14,13 @@ import matplotlib.pyplot as plt
 
 # load the data
 adjacency_matrix = np.load("data/adjacency_matrix.npy")
-# nb datapoints
-nb_datapoints = adjacency_matrix.shape[0]
-dataset = [x for x in range(nb_datapoints)]
 
 
 def cluster_and_compute_normalized_cut(
         nb_clusters: int,
         adjacency_matrix: np.ndarray,
         ) -> float:
+    n = adjacency_matrix.shape[0]
     """
     EDIT
     """
