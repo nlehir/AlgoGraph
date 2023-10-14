@@ -46,11 +46,11 @@ def greedy_standard(
     print("======")
 
     selected_nodes = list()
-    dominated_nodes = list()
+    dominated_nodes = set()
     step = 0
 
     """
-    EDIT: qdd the algorithm
+    EDIT: add the algorithm
     """
     plot_subset(
         step,
@@ -60,4 +60,8 @@ def greedy_standard(
         selected_nodes,
         graph_name,
     )
-    test_dominating(nodes, edges_list, selected_nodes)
+    test_dominating(
+            nodes=list(nodes),
+            edges_list=edges_list,
+            selected_nodes=selected_nodes,
+            )

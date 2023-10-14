@@ -55,4 +55,8 @@ def greedy_bis(
         graph_name,
         method="bis",
     )
-    test_dominating(nodes, edges_list, selected_nodes)
+    test_dominating(
+            nodes=list(nodes),
+            edges_list=edges_list,
+            selected_nodes=selected_nodes,
+            )

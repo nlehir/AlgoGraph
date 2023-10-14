@@ -3,7 +3,11 @@ from networkx.algorithms.dominating import is_dominating_set
 from termcolor import colored
 
 
-def test_dominating(nodes, edges_list, selected_nodes) -> None:
+def test_dominating(
+    nodes: list[int],
+    edges_list: list[list[int]],
+    selected_nodes: list[int],
+) -> None:
     G = nx.Graph()
     G.add_nodes_from(nodes)
     G.add_edges_from(edges_list)
