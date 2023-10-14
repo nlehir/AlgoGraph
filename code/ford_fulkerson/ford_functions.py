@@ -161,12 +161,11 @@ def check_flow(flow: np.ndarray, nodes: list[int], capacities: np.ndarray) -> No
 
     # -------------
     # Second check
-    # -------------
     # flow conservation
-    flow_check_2 = list()
-    for node in range(1, len(nodes) + 1):
-        flow_check_2.append(sum(flow[:, node]) == 0)
-    if all(flow_check_2):
+    # -------------
+    inner_flow = flow[1:len(nodes)+1]
+    flow_is_conserved = (np.abs(inner_flow.sum(axis=1)).sum() == 0)
+    if flow_is_conserved:
         print(colored("Second check ok : flow is conserved.", "blue", attrs=["bold"]))
     else:
         print(
