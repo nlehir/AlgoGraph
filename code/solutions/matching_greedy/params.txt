@@ -1,0 +1,2 @@
+n_nodes=6000
+max_successors=10
