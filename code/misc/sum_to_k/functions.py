@@ -14,6 +14,10 @@ def sum_to_k(list_: list[int], k: int) -> bool:
     Simple, intuitive implementation
     """
     for index, value in enumerate(list_):
+        """
+        It is sufficient to iterate over indexes that are larger
+        than index
+        """
         for y in list_[index+1:]:
             if value + y == k:
                 return True

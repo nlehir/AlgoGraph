@@ -4,6 +4,8 @@ to assess whether two integers in a list
 sum to a given value k.
 
 We only test lists that have more than 3 elements.
+
+To test, run pytest
 """
 from functions import (
         sum_to_k,
