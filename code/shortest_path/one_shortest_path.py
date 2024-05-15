@@ -1,5 +1,9 @@
 """"
     return one shortest path
+
+    This is method can be seen as a very specific case and simplification
+    of a Dijkstra where all edges have a length of 1, which simplifies the
+    algorithm.
 """
 from termcolor import colored
 
