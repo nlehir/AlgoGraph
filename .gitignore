@@ -25,7 +25,7 @@ code/ford_fulkerson/images/**/*.pdf
 
 # code/solutions/rsa/generate_keys_and_codes.py
 code/solutions/**/*.pdf
-code/solutions/
+# code/solutions/
 
 code/graphs/clique/archive/
 
