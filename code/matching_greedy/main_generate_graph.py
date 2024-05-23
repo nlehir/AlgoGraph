@@ -10,6 +10,8 @@ import os
 import pickle
 import random
 
+from params import N_NODES, MAX_SUCCESSORS
+
 import matplotlib.pyplot as plt
 import networkx as nx
 from read_params import read_params
@@ -140,7 +142,8 @@ def generate_problem_instance(n_nodes: int, max_successors: int):
     plt.close()
 
 
-params = read_params()
-nb_nodes = params[0]
-max_successors = params[1]
-generate_problem_instance(nb_nodes, max_successors)
+def main():
+    generate_problem_instance(n_nodes = N_NODES, max_successors=MAX_SUCCESSORS)
+
+if __name__ == "__main__":
+    main()

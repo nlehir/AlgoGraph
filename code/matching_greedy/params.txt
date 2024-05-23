@@ -1,2 +1,0 @@
-n_nodes=45
-max_successors=6

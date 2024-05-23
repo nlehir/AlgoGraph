@@ -33,3 +33,4 @@ code/make_exercises.sh
 code/exercises/
 
 code/graphs/dominating_set/images/*/*.pdf
+code/matching_greedy/images/**/

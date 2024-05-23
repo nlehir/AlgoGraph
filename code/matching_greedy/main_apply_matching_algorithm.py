@@ -5,8 +5,8 @@
 import os
 import pickle
 
-from matching_functions import match_greedy_list, match_greedy_set
-from read_params import read_params
+from matching_algorithm import match_greedy
+from params import N_NODES, MAX_SUCCESSORS
 
 
 def match_graph(nb_nodes: int, max_nb_of_successors: int) -> None:
@@ -33,15 +33,11 @@ def match_graph(nb_nodes: int, max_nb_of_successors: int) -> None:
             os.remove(dir_name + image)
 
     # apply greedy algorithm
-    match_greedy_list(edges_list, nodes, dir_name)
-    match_greedy_set(edges_list, nodes, dir_name)
+    match_greedy(edges_list, nodes, dir_name)
 
 
 def main() -> None:
-    params = read_params()
-    nb_nodes = params[0]
-    max_successors = params[1]
-    match_graph(nb_nodes, max_successors)
+    match_graph(nb_nodes = N_NODES, max_nb_of_successors=MAX_SUCCESSORS)
 
 if __name__ == "__main__":
     main()

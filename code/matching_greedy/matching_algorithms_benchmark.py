@@ -1,5 +1,5 @@
 """
-Functions used for the greedy matching algorithm
+Study the speed of the greedy algorithm as a function of the data structure.
 """
 
 def match_greedy_list_list(edges_list: list[list]) -> list:
