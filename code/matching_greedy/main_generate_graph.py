@@ -14,13 +14,6 @@ from params import N_NODES, MAX_SUCCESSORS
 
 import matplotlib.pyplot as plt
 import networkx as nx
-from read_params import read_params
-
-if not os.path.exists("data/"):
-    os.makedirs("data")
-
-if not os.path.exists("images/"):
-    os.makedirs("images")
 
 
 def generate_problem_instance(n_nodes: int, max_successors: int):
@@ -143,6 +136,13 @@ def generate_problem_instance(n_nodes: int, max_successors: int):
 
 
 def main():
+
+    if not os.path.exists("data/"):
+        os.makedirs("data")
+
+    if not os.path.exists("images/"):
+        os.makedirs("images")
+
     generate_problem_instance(n_nodes = N_NODES, max_successors=MAX_SUCCESSORS)
 
 if __name__ == "__main__":
