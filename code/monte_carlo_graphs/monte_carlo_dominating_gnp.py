@@ -9,7 +9,7 @@ https://networkx.org/documentation/stable/reference/generated/networkx.generator
 """
 
 nb_nodes = 100
-p_edge = 0.3
+p_edge = 0.04
 name = "gnp"
 
 nb_trials = 1000

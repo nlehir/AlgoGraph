@@ -32,5 +32,7 @@ code/graphs/clique/archive/
 code/make_exercises.sh
 code/exercises/
 
-code/graphs/dominating_set/images/*/*.pdf
-code/matching_greedy/images/**/
+code/graphs/dominating_set/images/**
+code/graphs/dominating_set/arch/
+code/graphs/matching_greedy/images/**/
+code/graphs/matching_greedy/greedy_matching_structures.py

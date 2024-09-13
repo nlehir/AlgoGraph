@@ -1,13 +1,15 @@
 import matplotlib.pyplot as plt
-
+from utils import define_fig_path
 import networkx as nx
 
 def show_matching(
-        nodes: list[int],
-        edges_list: list[list],
+        nodes: nx.classes.reportviews.NodeView,
+        edges_list: nx.classes.reportviews.EdgeView,
         matching: list[set],
         index: int,
-        dir_name: str) -> None:
+        graph_name: str,
+        graph_type: str,
+        ) -> None:
     """
     function to highlight the matching edges
     and save the graph image
@@ -51,8 +53,12 @@ def show_matching(
             edge_colors.append(unmatched_edge_color)
 
     # visualize the graph
-    graph_name = dir_name + "match_greedy_" + str(index) + ".pdf"
-    graph_title = f"\nMatching size: {len(matching)}\nAlgo step: {index}\nNb nodes: {len(nodes)}"
+    graph_title = (
+            f"\nMatching size: {len(matching)}"
+            f"\nAlgo step: {index}"
+            f"\nNb nodes: {len(nodes)}"
+            f"\nGraph type: {graph_type}"
+            )
 
     plt.title(graph_title, fontsize=9)
     # we give a seed to the layout engine
@@ -98,5 +104,11 @@ def show_matching(
 
     plt.tight_layout()
     plt.axis("off")
-    plt.savefig(graph_name)
+    fig_path = define_fig_path(
+        problem="matching_greedy",
+        graph_name=graph_name,
+        method="greedy",
+        step=index,
+    )
+    plt.savefig(fig_path)
     plt.close()

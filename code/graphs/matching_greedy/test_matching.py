@@ -4,21 +4,19 @@ from termcolor import colored
 
 
 def test_matching(
-        nodes: list[int],
-        edges_list: list[list],
+        G: nx.Graph,
         matching: list[set],
         ) -> None:
-    G = nx.Graph()
-    G.add_nodes_from(nodes)
-    G.add_edges_from(edges_list)
-
     edges_set = set()
     for edge in matching:
         edges_set.add(tuple(edge))
     if is_matching(G=G, matching=edges_set):
-        print(
-            colored("selected of nodes is a matching", "blue", attrs=["bold"])
-        )
+        message = (
+            "selected of nodes is a matching\n"
+            f"matching size: {len(edges_set)}"
+                )
+        message = colored(message, color="blue")
+        print(message)
     else:
         print(
             colored(

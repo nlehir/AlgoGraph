@@ -2,8 +2,8 @@ from typing import Callable
 import os
 import networkx as nx
 import matplotlib.pyplot as plt
-from matching_algorithms_benchmark import match_greedy_list_list, match_greedy_set_set, match_greedy_set_list
-from test_matching import test_matching
+from matching_greedy.greedy_matching_structures import match_greedy_list_list, match_greedy_set_set, match_greedy_set_list
+from utils import clean_name
 
 """
 Gnp random graph
@@ -17,10 +17,6 @@ from time import time
 NB_TESTS = 100
 P_EDGE = 0.04
 
-def clean_filename(name: str) -> str:
-    name = name.replace(".", "_")
-    name = name.replace(" ", "_")
-    return name
 
 def plot_function_curve(
         func_name: str,
@@ -43,11 +39,6 @@ def plot_function_curve(
             tic = time()
             matching = func(edges_list = G.edges)
             toc = time()
-            # test_matching(
-            #         nodes=G.nodes,
-            #         edges_list=G.edges,
-            #         matching=list(matching),
-            #         )
             elapsed_time = toc-tic
             times_for_n.append(elapsed_time)
         average_time_for_n = sum(times_for_n)/NB_TESTS
@@ -82,8 +73,9 @@ def main() -> None:
     plt.xlabel("Number of nodes in the graph n")
     plt.tight_layout()
     fig_name = f"speed_comparison_p_{P_EDGE:.3E}"
-    fig_name = clean_filename(fig_name)
+    fig_name = clean_name(fig_name)
     fig_path = os.path.join(
+            "matching_greedy",
             "images",
             f"{fig_name}.pdf",
             )

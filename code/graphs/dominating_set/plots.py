@@ -1,7 +1,7 @@
-import os
-
 import matplotlib.pyplot as plt
 import networkx as nx
+
+from utils import define_fig_path
 
 # plotting params
 alpha = 0.7
@@ -11,10 +11,16 @@ node_color = "#b6cef2"
 
 
 def plot_subset(
-    step, nodes, edges, dominated_nodes, selected_nodes, graph_name, method="standard"
+    step: int,
+    edges,
+    dominated_nodes: set,
+    selected_nodes: list,
+    graph_name: str,
+    graph_type: str,
+    method="standard",
 ):
     """
-    function to highlight the dominated nodes
+    Highlight the dominated nodes
     and save the graph image
     """
     # print("plot graph")
@@ -39,19 +45,13 @@ def plot_subset(
     G.add_edges_from(edges)
 
     # visualize the graph
-    dir_name = f"images/{graph_name}"
-    if method == "standard":
-        graph_name = f"{dir_name}/greedy_{step}.pdf"
-    elif method == "bis":
-        graph_name = f"{dir_name}/greedy_bis_{step}.pdf"
-    elif method == "ter":
-        graph_name = f"{dir_name}/greedy_ter_{step}.pdf"
-    else:
-        raise ValueError("wrong algorithm method")
 
-    graph_title = f"""Subset size: {len(selected_nodes)}
-    Algo step: {step}
-    Method: {method}"""
+    graph_title = (
+        f"Subset size: {len(selected_nodes)}"
+        f"\nalgo step: {step}"
+        f"\nmethod: {method}"
+        f"\ngraph type: {graph_type}"
+    )
 
     plt.title(graph_title, fontsize=9)
     # we give a seed to the layout engine
@@ -95,27 +95,34 @@ def plot_subset(
 
     plt.tight_layout()
     plt.axis("off")
-    plt.savefig(graph_name)
+    fig_path = define_fig_path(
+        problem="dominating_set",
+        graph_name=graph_name,
+        method=method,
+        step=step,
+    )
+    plt.savefig(fig_path)
     plt.close()
 
 
-def plot_initial_graph(edges, graph_name):
+def plot_initial_graph(
+    G: nx.Graph,
+    graph_name: str,
+    graph_type: str,
+):
     """
     function to show the initial graph
     and save a representation to a pdf file
     """
-    # print("plot graph")
-    G = nx.Graph()
+    edges = G.edges
 
+    print("Plot initial graph")
     # reformat edges as a list of tuples
     edges = [set(edge) for edge in edges]
 
     G.add_edges_from(edges)
 
-    # visualize the graph
-    dir_name = f"images/{graph_name}"
-    graph_name = f"{dir_name}/graph_initial.pdf"
-    graph_title = f"\nInitial graph"
+    graph_title = f"Initial graph\n{graph_type} graph"
 
     plt.title(graph_title, fontsize=9)
     # we give a seed to the layout engine
@@ -137,7 +144,15 @@ def plot_initial_graph(edges, graph_name):
         with_labels=True,
     )
 
+    fig_path = define_fig_path(
+        problem="dominating_set",
+        graph_name=graph_name,
+        method=None,
+        step=None,
+        initial=True,
+    )
+
     plt.tight_layout()
     plt.axis("off")
-    plt.savefig(graph_name)
+    plt.savefig(fig_path)
     plt.close()

@@ -8,7 +8,7 @@ Powerlaw cluster graph
 https://networkx.org/documentation/stable/reference/generated/networkx.generators.random_graphs.powerlaw_cluster_graph.html
 """
 
-nb_nodes = 100
+nb_nodes = 40
 m_edges = 3
 proba_triangle = 0.2
 name = "pcg"
