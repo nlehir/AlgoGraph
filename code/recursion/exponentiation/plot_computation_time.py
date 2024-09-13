@@ -4,6 +4,13 @@ import matplotlib.pyplot as plt
 
 
 def plot_computation_times(n_min: int, n_max: int) -> None:
+
+    message = (
+            "Plot speed of exponentiation methods with exponent "
+            f"between {n_min} and {n_max}"
+          )
+    print(message)
+
     folder = f"./computation_times_{n_min}_{n_max}/"
     with open(folder + "fastexp", "rb") as handle:
         fast_exp_times = pickle.load(handle)

@@ -34,6 +34,13 @@ def test_fast_exp(nb_of_tests: int, n_min: int, n_max: int) -> None:
     :param n_max (int): maximum exponent in range
     :saves average computing times in files:
     """
+
+    message = (
+            "Compare speed of exponentiation methods with exponent "
+            f"between {n_min} and {n_max}"
+          )
+    print(message)
+
     fastexp_times = list()
     double_splat_times = list()
     pow_times = list()

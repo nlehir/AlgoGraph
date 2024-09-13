@@ -38,4 +38,8 @@ code/graphs/dominating_set/arch/
 code/graphs/matching_greedy/images/**/
 code/graphs/matching_greedy/greedy_matching_structures.py
 
+code/recursion/exponentiation/*/
+
+code/arch/
+
 code/rsa/arch/
