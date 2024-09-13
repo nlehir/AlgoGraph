@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
-from utils import define_fig_path
 import networkx as nx
+
+from utils import define_fig_path
+
 
 def show_matching(
         nodes: nx.classes.reportviews.NodeView,

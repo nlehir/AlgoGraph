@@ -3,12 +3,12 @@
    in a generated graph.
 """
 
-from dominating_set.greedy_standard import greedy_standard
 from dominating_set.greedy_bis import greedy_bis
+from dominating_set.greedy_standard import greedy_standard
 from dominating_set.greedy_ter import greedy_ter
-from params import GRAPH_TYPE, PARAMS
-from utils import define_graph
 from dominating_set.plots import plot_initial_graph
+from params import GRAPH_TYPE, PARAMS
+from utils import clean_folder, define_graph
 
 
 def main() -> None:
@@ -19,11 +19,15 @@ def main() -> None:
     G = graph_dict["G"]
     graph_name = graph_dict["graph_name"]
 
+    clean_folder(
+        graph_name=graph_name,
+        problem="dominating_set",
+    )
     plot_initial_graph(
-            G=G,
-            graph_name=graph_name,
-            graph_type=GRAPH_TYPE,
-            )
+        G=G,
+        graph_name=graph_name,
+        graph_type=GRAPH_TYPE,
+    )
 
     greedy_standard(
         G=G,
@@ -37,12 +41,11 @@ def main() -> None:
     #     graph_type=GRAPH_TYPE,
     # )
 
-    greedy_ter(
-        G=G,
-        graph_name=graph_name,
-        graph_type=GRAPH_TYPE,
-    )
-
+    # greedy_ter(
+    #     G=G,
+    #     graph_name=graph_name,
+    #     graph_type=GRAPH_TYPE,
+    # )
 
 
 if __name__ == "__main__":

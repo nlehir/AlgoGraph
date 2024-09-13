@@ -1,9 +1,11 @@
 """
 Functions used for the greedy matching algorithm
 """
-from matching_greedy.test_matching import test_matching
-from matching_greedy.plots import show_matching
 import networkx as nx
+
+from matching_greedy.plots import show_matching
+from matching_greedy.test_matching import test_matching
+
 
 def match_greedy(
         G: nx.Graph,
@@ -22,24 +24,14 @@ def match_greedy(
     index = 1
     matched_nodes = list()
     matching = list()
-    for edge in edges_list:
-        print(edge)
-        if edge[0] in matched_nodes:
-            pass
-        elif edge[1] in matched_nodes:
-            pass
-        else:
-            matched_nodes += edge
-            matching.append(set(edge))
-            show_matching(
-                    nodes=nodes,
-                    edges_list=edges_list,
-                    matching=matching,
-                    index=index,
-                    graph_name=graph_name,
-                    graph_type=graph_type,
-                    )
-        index += 1
+    show_matching(
+            nodes=nodes,
+            edges_list=edges_list,
+            matching=matching,
+            index=index,
+            graph_name=graph_name,
+            graph_type=graph_type,
+            )
 
     print(f"number of nodes in matching: {2*len(matching)}")
     # quick test

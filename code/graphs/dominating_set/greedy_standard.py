@@ -25,24 +25,10 @@ def greedy_standard(
     n_nodes = len(nodes)
 
     """
+    EDIT:
         sort the nodes by degree
         aka the number of neighbors
         """
-    sorted_nodes = sorted(
-        neighbors, key=lambda node: len(neighbors[node]), reverse=True
-    )
-
-    print("=====")
-    print("sorted dictionary of neighbors by degree of the node")
-    print("=====")
-
-    for node in sorted_nodes:
-        print(f"node  {node}")
-        print(f"neighbors {neighbors[node]}")
-
-    print("\n======")
-    print("greedy algorithm")
-    print("======")
 
     selected_nodes = list()
     dominated_nodes = set()
@@ -51,31 +37,14 @@ def greedy_standard(
     """
     EDIT: add the algorithm
     """
-    for node in sorted_nodes:
-        # stop if the set is dominating
-        if node not in dominated_nodes:
-            step += 1
-            # update our selected subset
-            selected_nodes.append(node)
-            print(f"\nadd {node} to the set of selected nodes")
-            # update the list of dominated nodes
-            dominated_nodes.add(node)
-            print(f"add {node} to the list of dominated nodes")
-            for neighbor in neighbors[node]:
-                if neighbor not in dominated_nodes:
-                    # update the list of not dominated nodes
-                    dominated_nodes.add(neighbor)
-                    print(f"add {neighbor} to the list of dominated nodes")
-            # see how many more nodes we have to dominate
-            print(f"still have to dominate {n_nodes-len(dominated_nodes)} nodes")
-            plot_subset(
-                step=step,
-                edges=edges_list,
-                dominated_nodes=dominated_nodes,
-                selected_nodes=selected_nodes,
-                graph_name=graph_name,
-                graph_type=graph_type,
-            )
+    plot_subset(
+        step=step,
+        edges=edges_list,
+        dominated_nodes=dominated_nodes,
+        selected_nodes=selected_nodes,
+        graph_name=graph_name,
+        graph_type=graph_type,
+    )
     test_dominating(
         G=G,
         selected_nodes=selected_nodes,
