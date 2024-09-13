@@ -30,11 +30,8 @@ def fast_exponentiation_algebric(a: int, n: int) -> int:
         # finally compute a^n
         result = 1
         """
-            EDIT THIS LOOP
+            EDIT: finish computation
         """
-        for i in range(len(binary_n)):
-            if binary_n[i] == 1:
-                result *= a
         return result
 
 
@@ -63,8 +60,8 @@ def binary_decomposition(n: int) -> list:
 
 def test_binary_decomposition(n: int, decomposition: list) -> None:
     result = 0
-    for i in range(len(decomposition)):
-        if decomposition[i] == 1:
+    for i, coef in enumerate(decomposition):
+        if coef == 1:
             result += 2**i
     if n == result:
         print(
@@ -92,17 +89,21 @@ def test_method(a: int, n: int) -> None:
         )
 
 
-"""
-    test our results
-"""
-test_binary_decomposition(5, binary_decomposition(5))
-test_method(4, 5)
-test_method(13, 5)
+def main():
+    """
+        test our results
+    """
+    test_binary_decomposition(5, binary_decomposition(5))
+    test_method(a=4, n=5)
+    test_method(a=13, n=5)
 
-test_binary_decomposition(9, binary_decomposition(9))
-test_method(4, 9)
-test_method(13, 9)
+    test_binary_decomposition(9, binary_decomposition(9))
+    test_method(a=4, n=9)
+    test_method(a=13, n=9)
 
-test_binary_decomposition(2000, binary_decomposition(2000))
-test_method(4, 2000)
-test_method(13, 2000)
+    test_binary_decomposition(2000, binary_decomposition(2000))
+    test_method(a=4, n=2000)
+    test_method(a=13, n=2000)
+
+if __name__ == "__main__":
+    main()
