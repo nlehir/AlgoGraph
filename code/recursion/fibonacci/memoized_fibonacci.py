@@ -18,4 +18,4 @@ def memo_fibonacci(n: int) -> int:
     return intermediate_values[n]
 
 
-print(memo_fibonacci(25))
+print(memo_fibonacci(101))
