@@ -14,7 +14,7 @@ from random import randrange
 from termcolor import colored
 
 
-def generate_rsa_keys(p: int, q: int) -> tuple[int, int]:
+def generate_rsa_keys(p: int, q: int):
     """
     Using two primary numbers p and q, generate the keys
 
@@ -34,14 +34,7 @@ def generate_rsa_keys(p: int, q: int) -> tuple[int, int]:
         a += 1
 
     # find b such that ab=1[phi]
-    # b is the inverse of a modulo phi
-    r, b, v, r2, b2, v2 = a, 1, 0, phi, 0, 1
-    # we use the extended euclid algorithm
-    while not (r2 == 0):
-        q = r // r2
-        r, b, v, r2, b2, v2 = r2, b2, v2, r - q * r2, b - q * b2, v - q * v2
-    while b < 0:
-        b += phi
+    b = invert_a_modulo_phi(a=a, phi=phi)
     return (a, b)
 
 
@@ -65,7 +58,7 @@ def cipher_rsa(text: str, public_key: tuple[int, int]) -> str:
         coded_index = 1
         print(colored(character + f" ({ascii_index})", "blue", attrs=["bold"]), end="")
         print(" becomes ", end="")
-        print(colored(coded_index, "blue", attrs=["bold"]))
+        print(colored(f"{coded_index}", "blue", attrs=["bold"]))
         # we use a comma as a separator
         code += f"{coded_index},"
     # remove the last comma
@@ -73,7 +66,7 @@ def cipher_rsa(text: str, public_key: tuple[int, int]) -> str:
     return code
 
 
-def decipher_rsa(code, public_key, private_key):
+def decipher_rsa(code: str, public_key: tuple[int, int], private_key: int):
     """
     Deciphers the code.
 
@@ -103,7 +96,7 @@ def decipher_rsa(code, public_key, private_key):
     return decoded_text
 
 
-def find_private_key(public_key):
+def find_private_key(public_key: tuple[int, int]):
     """
     Finds the private key as a function
     of the public key (n,a) to break the RSA.
@@ -123,21 +116,29 @@ def find_private_key(public_key):
         # find b as before
         phi = (p - 1) * (q - 1)
         # b is the inverse of a modulo phi
-        # extended euclid algorithm (as before)
-        r, b, v, r2, b2, v2 = a, 1, 0, phi, 0, 1
-        while not (r2 == 0):
-            q1 = r // r2
-            r, b, v, r2, b2, v2 = r2, b2, v2, r - q1 * r2, b - q1 * b2, v - q1 * v2
-        while b < 0:
-            b += phi
+        b = invert_a_modulo_phi(a=a, phi=phi)
         return b, phi, p, q
     else:
         print("no primary decomposition found for n")
         # return for convenience
         return 0, 0, 0, 0
 
+def invert_a_modulo_phi(a: int, phi: int) -> int:
+    """
+    Perform the extended euclid algorithm
+    in order to find the inverse oa f modulo phi
+    """
+    # extended euclid algorithm (as before)
+    r, b, v, r2, b2, v2 = a, 1, 0, phi, 0, 1
+    while not (r2 == 0):
+        q = r // r2
+        r, b, v, r2, b2, v2 = r2, b2, v2, r - q * r2, b - q * b2, v - q * v2
+    while b < 0:
+        b += phi
+    return b
 
-def primary_decomposition(n):
+
+def primary_decomposition(n: int):
     """
     Decompose n in a product of prime numbers.
     Very importantly, there is a unique decomposition
@@ -162,7 +163,7 @@ def primary_decomposition(n):
                 # print(f"{p_test} divides {n} and is prime")
                 q_test = n // p_test
                 # check if q_test is a primary number
-                if isPrime(q_test):
+                if isPrime(n=q_test):
                     print(
                         f"decomposition in prime factors of {n} : {p_test} , {q_test}"
                     )
@@ -172,12 +173,11 @@ def primary_decomposition(n):
     return 0, 0
 
 
-def isPrime(n):
+def isPrime(n: int):
     if n < 2:
         return False
 
-    # we use a generator to save memory
-    # https://docs.python.org/3/library/itertools.html
+    # we use a genertor to save memory
     for number in islice(count(2), int(math.sqrt(n) - 1)):
         if n % number == 0:
             return False

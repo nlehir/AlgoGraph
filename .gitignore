@@ -26,6 +26,7 @@ code/ford_fulkerson/images/**/*.pdf
 # code/solutions/rsa/generate_keys_and_codes.py
 code/solutions/**/*.pdf
 code/solutions/
+code/solutions/arch/
 
 code/graphs/clique/archive/
 
@@ -36,3 +37,5 @@ code/graphs/dominating_set/images/**/
 code/graphs/dominating_set/arch/
 code/graphs/matching_greedy/images/**/
 code/graphs/matching_greedy/greedy_matching_structures.py
+
+code/rsa/arch/
