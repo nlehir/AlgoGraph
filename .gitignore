@@ -43,3 +43,5 @@ code/recursion/exponentiation/*/
 code/arch/
 
 code/rsa/arch/
+
+code/compatibility_graphs/geometric_data/images/*.pdf
