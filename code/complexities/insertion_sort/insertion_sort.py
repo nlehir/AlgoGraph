@@ -7,7 +7,7 @@ def verboseprint(var, verbose):
         print(var)
 
 
-def insertion_sort(llist: list, verbose: bool = True) -> int:
+def insertion_sort(llist: list, verbose: bool = True) -> tuple[int, list]:
     """
     In Python you can modify objects defined
     outside the scope of a function
@@ -42,7 +42,7 @@ def insertion_sort(llist: list, verbose: bool = True) -> int:
         llist[j + 1] = temp
         verboseprint(f"new list:\n{llist}", verbose)
     verboseprint(f"{counter} operations performed", verbose)
-    return counter
+    return counter, llist
 
 
 def main() -> None:
