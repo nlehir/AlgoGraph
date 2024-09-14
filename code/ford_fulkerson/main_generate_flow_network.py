@@ -4,8 +4,7 @@ import pickle
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
-
-from read_params import read_params
+from params import CAPACITY_MAX, NB_EDGES, NB_NODES
 
 # from random import randint
 
@@ -123,32 +122,45 @@ def generate_flow_network(nb_nodes: int, nb_edges: int, capacity_max: int) -> No
             edge_labels[edge] = inner_capacities[node_1][node_2]
     nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=6)
     # plt.tight_layout()
-    plt.savefig(dir_name + "/initial_graph_nx.pdf")
+    fig_path = os.path.join(dir_name, "initial_graph_nx.pdf")
+    plt.savefig(fig_path)
     plt.close()
 
     # store data
     nodes = [x for x in range(1, nb_nodes + 1)]
-    with open("data/" + flow_network + "_nodes", "wb") as f:
+
+    nodes_path = os.path.join("data", f"{flow_network}_nodes")
+    with open(nodes_path, "wb") as f:
         pickle.dump(nodes, f)
 
-    with open("data/" + flow_network + "_inner_capacities", "wb") as f:
+    inner_capacities_path = os.path.join("data", f"{flow_network}_inner_capacities")
+    with open(inner_capacities_path, "wb") as f:
         pickle.dump(inner_capacities, f)
 
-    with open("data/" + flow_network + "_source_capacities", "wb") as f:
+    source_capacities_path = os.path.join("data", f"{flow_network}_source_capacities")
+    with open(source_capacities_path, "wb") as f:
         pickle.dump(source_capacities, f)
 
-    with open("data/" + flow_network + "_sink_capacities", "wb") as f:
+    sink_capacities_path = os.path.join("data", f"{flow_network}_sink_capacities")
+    with open(sink_capacities_path, "wb") as f:
         pickle.dump(sink_capacities, f)
 
-    with open("data/" + flow_network + "_G", "wb") as f:
+    G_path = os.path.join("data", f"{flow_network}_G")
+    with open(G_path, "wb") as f:
         pickle.dump(G, f)
 
-    with open("data/" + flow_network + "_pos", "wb") as f:
+    pos_path = os.path.join("data", f"{flow_network}_pos")
+    with open(pos_path, "wb") as f:
         pickle.dump(pos, f)
 
 
-params = read_params()
-nb_nodes = int(params["nb_nodes"])
-nb_edges = int(params["nb_edges"])
-capacity_max = int(params["capacity_max"])
-generate_flow_network(nb_nodes, nb_edges, capacity_max)
+def main():
+    generate_flow_network(
+        nb_nodes=NB_NODES,
+        nb_edges=NB_EDGES,
+        capacity_max=CAPACITY_MAX,
+    )
+
+
+if __name__ == "__main__":
+    main()

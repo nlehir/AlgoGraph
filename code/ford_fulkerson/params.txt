@@ -1,3 +1,0 @@
-nb_nodes=7
-nb_edges=7
-capacity_max=2

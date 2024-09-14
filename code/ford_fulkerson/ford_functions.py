@@ -1,8 +1,7 @@
 import networkx
 import numpy as np
-from termcolor import colored
-
 from plot_graphs import build_residual_graph, highlight_path, show_residual_network_nx
+from termcolor import colored
 
 
 def apply_ford_fulkerson(
@@ -88,18 +87,19 @@ def apply_ford_fulkerson(
         augmenting_paths = find_augmenting_paths(residual_capacities)
         # if there exists some augmenting paths,
         # then the return list is not empty
+        flow_value = 0
         if augmenting_paths:
             print("found augmenting paths in residual graph")
             # update the flow
             flow = augment_flow(
-                flow,
-                residual_capacities,
-                augmenting_paths,
-                dir_name,
-                G_residual,
-                pos,
-                step,
-                nodes,
+                flow=flow,
+                residual_capacities=residual_capacities,
+                augmenting_paths=augmenting_paths,
+                dir_name=dir_name,
+                G_residual=G_residual,
+                pos=pos,
+                step=step,
+                nodes=nodes,
             )
             residual_capacities = capacities - flow
 
@@ -163,8 +163,8 @@ def check_flow(flow: np.ndarray, nodes: list[int], capacities: np.ndarray) -> No
     # Second check
     # flow conservation
     # -------------
-    inner_flow = flow[1:len(nodes)+1]
-    flow_is_conserved = (np.abs(inner_flow.sum(axis=1)).sum() == 0)
+    inner_flow = flow[1 : len(nodes) + 1]
+    flow_is_conserved = np.abs(inner_flow.sum(axis=1)).sum() == 0
     if flow_is_conserved:
         print(colored("Second check ok : flow is conserved.", "blue", attrs=["bold"]))
     else:
@@ -243,7 +243,13 @@ def augment_flow(
 
     # highlight this path in the graph
     highlight_path(
-        G_residual, pos, augmenting_path, dir_name, step, nodes, path_capacity
+        G_residual=G_residual,
+        pos=pos,
+        augmenting_path=augmenting_path,
+        dir_name=dir_name,
+        step=step,
+        nodes=nodes,
+        path_capacity=path_capacity,
     )
 
     # finally augment the flow
@@ -262,7 +268,7 @@ def augment_flow(
     return flow
 
 
-def find_augmenting_paths(residual_capacities: np.ndarray) -> list[int]:
+def find_augmenting_paths(residual_capacities: np.ndarray) -> list[list[int]]:
     """
     Look for an augmenting paths in the residual graph
     """

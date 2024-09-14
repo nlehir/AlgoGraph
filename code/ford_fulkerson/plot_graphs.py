@@ -2,6 +2,9 @@
     Utility functions in order to
     visualize the graphs
 """
+
+import os
+
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
@@ -64,12 +67,13 @@ def show_residual_network_nx(
         with_labels=True,
     )
     nx.draw_networkx_edge_labels(G_residual, pos, edge_labels=edge_labels, font_size=6)
-    plt.savefig(dir_name + f"/step_{step}__residual.pdf")
+    fig_path = os.path.join(dir_name, f"step_{step}__residual.pdf")
+    plt.savefig(fig_path)
     plt.close()
 
 
 def highlight_path(
-    G_residual: np.ndarray,
+    G_residual: nx.DiGraph,
     pos: dict,
     augmenting_path: list[int],
     dir_name: str,
@@ -129,7 +133,8 @@ def highlight_path(
         with_labels=True,
     )
     nx.draw_networkx_edge_labels(G_residual, pos, edge_labels=edge_labels, font_size=6)
-    plt.savefig(dir_name + f"/step_{step}_augmenting.pdf")
+    fig_path = os.path.join(dir_name, f"step_{step}_augmenting.pdf")
+    plt.savefig(fig_path)
     plt.close()
 
 
