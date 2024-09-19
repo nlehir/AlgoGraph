@@ -9,27 +9,22 @@ from nic import (
         choose_sign,
         )
 
-from params import (
-        N_NUMBERS,
-        NUMBERS_RANGE,
-        B_RANGE,
-        )
+from params import SCALE_X, SCALE_B, N_NUMBERS
 
 import numpy as np
 
 def test_choose_sign() -> None:
     rng = np.random.default_rng()
 
-    numbers = rng.uniform(
-            low=-NUMBERS_RANGE,
-            high=NUMBERS_RANGE,
+    numbers = rng.normal(
+            loc=0,
+            scale=SCALE_X,
             size=N_NUMBERS,
             )
-    b = rng.uniform(
-            low=-B_RANGE,
-            high=B_RANGE,
+    b = rng.normal(
+            loc=0,
+            scale=SCALE_B,
             )
-
     signs = choose_sign(numbers=numbers, b=b)
 
     assert type(signs) == np.ndarray

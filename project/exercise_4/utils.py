@@ -1,4 +1,5 @@
 import numpy as np
+from params import SCALE_X, SCALE_B, N_TESTS, N_NUMBERS
 from time import time
 
 def compute_score(numbers: np.ndarray, signs:np.ndarray, b: float):
@@ -8,25 +9,21 @@ def evaluate_solution(
         solution_name: str,
         solution,
         rng,
-        numbers_range,
-        b_range,
-        n_tests,
-        n_numbers,
         ):
     scores = list()
     runtimes = list()
     print(f"\nTesting solution {solution_name}")
-    for trial in range(n_tests):
-        if trial % (n_tests//10) == 0:
-            print(f"trial {trial}/{n_tests}")
-        numbers = rng.uniform(
-                low=-numbers_range,
-                high=numbers_range,
-                size=n_numbers,
+    for trial in range(N_TESTS):
+        if trial % (N_TESTS//10) == 0:
+            print(f"trial {trial}/{N_TESTS}")
+        numbers = rng.normal(
+                loc=0,
+                scale=SCALE_X,
+                size=N_NUMBERS,
                 )
-        b = rng.uniform(
-                low=-b_range,
-                high=b_range,
+        b = rng.normal(
+                loc=0,
+                scale=SCALE_B,
                 )
         tic = time()
         signs = solution(
@@ -42,11 +39,11 @@ def evaluate_solution(
         runtime = toc-tic
         scores.append(score)
         runtimes.append(runtime)
-    average_score = sum(scores)/n_tests
-    average_runtime = sum(runtimes)/n_tests
+    average_score = sum(scores)/N_TESTS
+    average_runtime = sum(runtimes)/N_TESTS
     message = (
             f"Solution: {solution_name}\n"
-            f"Average score over {n_tests} trials: {average_score:.4f}\n"
+            f"Average score over {N_TESTS} trials: {average_score:.4f}\n"
             f"Average running time: {average_runtime:.4E} s"
             )
     print(message)
