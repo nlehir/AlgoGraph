@@ -37,7 +37,7 @@ def plot_one_shortest_path(destination, shortest_path):
         f"Graph name: {GRAPH.name}"
     )
     fig_name = f"{GRAPH.name}_one_shortest_path_length_{path_length}_from_0_to_{destination}.pdf"
-    folder = "one_shortest_path"
+    folder = "3_one_shortest_path"
     highlight_path(
         G=GRAPH,
         path=shortest_path,

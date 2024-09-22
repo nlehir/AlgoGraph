@@ -29,7 +29,7 @@ def plot_all_paths(
                 f"Graph name: {GRAPH.name}"
                 )
         fig_name = f"{GRAPH.name}_all_paths_length_{path_length}_index_{index}_from_0_to_{destination}.pdf"
-        folder = "all_paths"
+        folder = "1_all_paths"
         print(path)
         highlight_path(
                 G=GRAPH,

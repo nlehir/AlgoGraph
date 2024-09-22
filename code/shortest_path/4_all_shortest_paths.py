@@ -42,7 +42,7 @@ def plot_all_shortest_paths(
                 f"Shortest path {index+1}/{nb_shortest_paths_to_dest} from 0 to {destination}: {path}"
                 )
         fig_name = f"{GRAPH.name}_shortest_path_length_{path_length}_index_{index}_from_0_to_{destination}.pdf"
-        folder = "all_shortest_paths"
+        folder = "4_all_shortest_paths"
         highlight_path(
                 G=GRAPH,
                 path=path,
