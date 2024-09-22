@@ -21,19 +21,19 @@ def main() -> None:
         numpy functions
     """
     P1 = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 7189730]
-    a1 = 5.6
+    x1 = 5.6
 
     P2 = [2, 1, 1, 8, 99, 3576, 87, 0.1, 0, 123, 9876534517]
-    a2 = 3
+    x2 = 3
 
     P3 = [1, 12567, 98, 89, 76381, 0, 0, 176, 0, 1987]
-    a3 = 0.12
+    x3 = 0.12
 
     P4 = [1]
-    a4 = 36
+    x4 = 36
 
     Polynoms_to_test = [P1, P2, P3, P4]
-    floats_to_test = [a1, a2, a3, a4]
+    floats_to_test = [x1, x2, x3, x4]
 
     print("============================================================")
     print("Compute values of polynomial functions")
