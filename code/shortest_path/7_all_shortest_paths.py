@@ -20,12 +20,18 @@ POS = pos2
 # POS = pos
 
 
-def print_all_shortest_paths(destination, shortest_paths):
+def print_all_shortest_paths(
+    destination: int,
+    shortest_paths: dict[int, list[list[int]]],
+        ):
     print(f"the shortest paths to {destination} are")
     print(shortest_paths[destination])
 
 
-def plot_all_shortest_paths(destination, shortest_paths):
+def plot_all_shortest_paths(
+    destination: int,
+    shortest_paths: dict[int, list[list[int]]],
+        ):
     shortest_paths_to_dest = shortest_paths[destination]
     nb_shortest_paths_to_dest = len(shortest_paths_to_dest)
     for index, path in enumerate(shortest_paths_to_dest):
@@ -49,28 +55,33 @@ def plot_all_shortest_paths(destination, shortest_paths):
 
 def main():
     number_of_nodes = len(GRAPH)
-    shortest_paths = [list() for i in range(number_of_nodes + 1)]
+    # initialize the found shortest paths to list() for each node
+    # each list will be the list of all found shortest paths to this node.
+    # We could initialize to None, but then linters are not happy.
+    # Put all found shortest paths inside a dict.
+    shortest_paths = {node: list() for node in GRAPH}
+    # Initialize the shortest path to 0 (beginning of all paths)
     shortest_paths[0] = [[0]]
 
-    for step in range(1, number_of_nodes + 1):
+    for k in range(1, number_of_nodes + 1):
         print(
-            colored(f"\n---\nbuild paths of length : {step}\n---", "blue", attrs=["bold"])
+            colored(f"\n---\nbuild paths of length : {k}\n---", "blue", attrs=["bold"])
         )
         for node in range(1, number_of_nodes):
             if shortest_paths[node] == list():
                 for neighbor in GRAPH.neighbors(node):
-                    shtr_pths_to_ngbr = shortest_paths[neighbor]
-                    a_shorted_path_to_ngbr_was_found = bool(len(shtr_pths_to_ngbr))
-                    if a_shorted_path_to_ngbr_was_found:
-                        shortests_paths_to_ngbr_are_length_step = (len(shtr_pths_to_ngbr[0]) == step)
-                        if shortests_paths_to_ngbr_are_length_step:
+                    shortest_paths_to_ngbr = shortest_paths[neighbor]
+                    # look if there are shortest paths to nbgr
+                    if shortest_paths_to_ngbr:
+                        # check the length of these shortest paths
+                        # in this specific graph, they all
+                        # have the same length, because all
+                        # eches are of length 1
+                        if (len(shortest_paths_to_ngbr[0]) == k):
                             """
                             EDIT: add lines here
                             """
 
-
-            print_all_shortest_paths(destination=node, shortest_paths=shortest_paths)
-            plot_all_shortest_paths(destination=node, shortest_paths=shortest_paths)
-
 if __name__ == "__main__":
     main()
+
