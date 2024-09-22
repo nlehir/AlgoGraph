@@ -46,7 +46,7 @@ def generate_random_undirected_graph(n: int, p: int):
     for i in range(1, n + 1):
         G.add_node(i)
 
-    for j in range(p - 1):
+    for j in range(p):
         random_edge = all_edges.pop()
         node_a = random_edge.pop()
         node_b = random_edge.pop()
