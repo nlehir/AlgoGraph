@@ -14,7 +14,10 @@ POS = pos2
 # GRAPH = G
 # POS = pos
 
-def plot_all_paths(path_length, paths):
+def plot_all_paths(
+        path_length: int,
+        paths: list[list[int]],
+        ):
     number_of_paths = len(paths)
     for index, path in enumerate(paths):
         path_length = len(path)-1
@@ -38,30 +41,31 @@ def plot_all_paths(path_length, paths):
                 )
 
 def main():
-    # paths of length 0
-    # a path will be coded as a list
-    # we will have a list of paths lengths
-    # each path length corresponds to a list
-    # so we have a list of lists of lists
-    paths = [[[0]]]
-    number_of_nodes = len(GRAPH)
+    # We will store all paths in a dict.
+    # In each (key, value) pair of the dict
+    # key corresponds to a path length
+    # and value contains the list of all the paths of this length.
+    # Also, each path is itsself a list of ints.
+    max_length = 4
+    paths = {path_length: list() for path_length in range(max_length+1)}
+    # There is only one path of length 0
+    paths[0] = [[0]]
 
-    for path_length in range(1, number_of_nodes):
+    for path_length in range(1, max_length+1):
         print(f"building paths of length {path_length}")
         new_paths = list()
-        """
-        EDIT: add lines here
-        """
         for path in paths[path_length - 1]:
+            """
+            EDIT: add lines here
+            """
             pass
-        paths.append(new_paths)
 
 
     print(f"paths of length 1 : {paths[1]}")
     print(f"paths of length 2 : {paths[2]}")
     print(f"paths of length 4 : {paths[4]}")
 
-    for path_length in range(1, 5):
+    for path_length in range(1, max_length+1):
         plot_all_paths(path_length=path_length, paths=paths[path_length])
 
 if __name__ == "__main__":
