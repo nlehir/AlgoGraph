@@ -135,16 +135,14 @@ def check_flow(flow: np.ndarray, nodes: list[int], capacities: np.ndarray) -> No
     inner_flow = flow[1:-1, 1:-1]
 
     # -------------
-    # First check
+    # First check: antisymmetry
     # -------------
     # check if for all nodes u and v,
     # that are different from the source,
     # and different from the sink, we have
     # f(u,v)=-f(v,u)
     # We can do it using matrices
-    antisymmetry_check = np.transpose(inner_flow) == -inner_flow
-    flow_check_1 = antisymmetry_check.all()
-    if flow_check_1:
+    if np.all(inner_flow.T == -inner_flow):
         print(
             colored(
                 "First check ok : flow matrix is antisymmetric.", "blue", attrs=["bold"]
@@ -160,12 +158,11 @@ def check_flow(flow: np.ndarray, nodes: list[int], capacities: np.ndarray) -> No
         )
 
     # -------------
-    # Second check
-    # flow conservation
+    # Second check: flow conservation
     # -------------
     inner_flow = flow[1 : len(nodes) + 1]
-    flow_is_conserved = np.abs(inner_flow.sum(axis=1)).sum() == 0
-    if flow_is_conserved:
+    sums_of_flows_from_nodes = inner_flow.sum(axis=1)
+    if np.abs(sums_of_flows_from_nodes).sum() == 0:
         print(colored("Second check ok : flow is conserved.", "blue", attrs=["bold"]))
     else:
         print(
@@ -177,13 +174,9 @@ def check_flow(flow: np.ndarray, nodes: list[int], capacities: np.ndarray) -> No
         )
 
     # -------------
-    # Third check
+    # Third check: flow smaller than capacity
     # -------------
-    # test that the flow on each edge does node exceed
-    # the capacity of the edge
-    comparison = flow <= capacities
-    flow_check_3 = comparison.all()
-    if flow_check_3:
+    if np.all(flow <= capacities):
         print(
             colored(
                 "Third check ok : flow does not exceed capacity on each edge.",
